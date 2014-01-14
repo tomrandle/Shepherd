@@ -1,29 +1,41 @@
-// Load the http module to create an http server.
-var http = require('http');
-
-// Configure our HTTP server to respond with Hello World to all requests.
-var server = http.createServer(function (request, response) {
-  response.writeHead(200, {"Content-Type": "text/plain"});
-  response.end("Hello World\n");
-});
-
-// Listen on port 8000, IP defaults to 127.0.0.1
-server.listen(8000);
-
-// Put a friendly message on the terminal
-console.log("Server running at http://127.0.0.1:8000/");
+/**
+ * Sample script to blink LED 13
+	PORT = '/dev/tty.usbmodem1421' #RHS
+	#PORT = '/dev/tty.usbmodem1411' #LHS
+	https://github.com/jgautier/firmata
+ */
 
 
+console.log('blink start ...');
 
-var five = require("johnny-five"),
-    // or "./lib/johnny-five" when running from the source
-    board = new five.Board();
+var ledPin = 13;
 
-board.on("ready", function() {
+var firmata = require('/usr/local/lib/node_modules/firmata');
+var board = new firmata.Board('/dev/tty.usbmodem1411', function(err) {
+    if (err) {
+        console.log(err);
+        return;
+    }
+    console.log('connected');
 
-  // Create an Led on pin 13 and strobe it on/off
-  // Optionally set the speed; defaults to 100ms
-  (new five.Led(13)).strobe();
-  console.log('howdee hi');
+    console.log('Firmware: ' + board.firmware.name + '-' + board.firmware.version.major + '.' + board.firmware.version.minor);
+
+    var ledOn = true;
+    board.pinMode(ledPin, board.MODES.OUTPUT);
+
+    setInterval(function(){
+
+        if (ledOn) {
+        console.log('+');
+        board.digitalWrite(ledPin, board.HIGH);
+        }
+        else {
+        console.log('-');
+        board.digitalWrite(ledPin, board.LOW);
+        }
+
+        ledOn = !ledOn;
+
+    },500);
 
 });
