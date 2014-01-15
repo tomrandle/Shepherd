@@ -1,41 +1,38 @@
-/**
- * Sample script to blink LED 13
-	PORT = '/dev/tty.usbmodem1421' #RHS
-	#PORT = '/dev/tty.usbmodem1411' #LHS
-	https://github.com/jgautier/firmata
- */
+
+/* Johnny Five */
+
+var five = require("johnny-five");
+var board = new five.Board();
+
+var ldr, strobe;
+/* Initiate pins */
+
+function initiatePins() {
+	strobe = new five.Pin(13);
+  	ldr = new five.Pin('A0');
+}
 
 
-console.log('blink start ...');
+/* Read Pin */ 
 
-var ledPin = 13;
+function readPin(pin) {
+	var reading = pin.value;
+	console.log(reading);
+}
 
-var firmata = require('/usr/local/lib/node_modules/firmata');
-var board = new firmata.Board('/dev/tty.usbmodem1411', function(err) {
-    if (err) {
-        console.log(err);
-        return;
-    }
-    console.log('connected');
 
-    console.log('Firmware: ' + board.firmware.name + '-' + board.firmware.version.major + '.' + board.firmware.version.minor);
+/* Main application */
 
-    var ledOn = true;
-    board.pinMode(ledPin, board.MODES.OUTPUT);
+board.on("ready", function() {
 
-    setInterval(function(){
+	console.log('Applicaton started');
 
-        if (ledOn) {
-        console.log('+');
-        board.digitalWrite(ledPin, board.HIGH);
-        }
-        else {
-        console.log('-');
-        board.digitalWrite(ledPin, board.LOW);
-        }
+	initiatePins();
 
-        ledOn = !ledOn;
+/* Main loop */
 
-    },500);
+setInterval(function(){readPin(ldr)},400);
 
-});
+  });
+
+
