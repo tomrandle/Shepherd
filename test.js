@@ -4,21 +4,32 @@
 var five = require("johnny-five");
 var board = new five.Board();
 
-var ldr, strobe;
-/* Initiate pins */
+var sensorPins = ['A0','A1','A2','A3'];
+var sensors = [];
+
+/* Initiate sensorPins */
 
 function initiatePins() {
-	strobe = new five.Pin(13);
-  	ldr = new five.Pin('A0');
-}
+
+	for (var i=0; i < sensorPins.length; i++) {
+		sensors.push(new five.Pin(sensorPins[i]));
+	};
+};
 
 
 /* Read Pin */ 
 
 function readPin(pin) {
 	var reading = pin.value;
-	console.log(reading);
-}
+	return reading;
+};
+
+function updateAllReadings() {
+	for (var i=0; i < sensors.length; i++) {
+		var reading = readPin(sensors[i]);
+		console.log("Pin:", i, reading);
+	};
+};
 
 
 /* Main application */
@@ -31,7 +42,9 @@ board.on("ready", function() {
 
 /* Main loop */
 
-setInterval(function(){readPin(ldr)},400);
+setInterval(function(){
+	updateAllReadings();
+	},400);
 
   });
 
