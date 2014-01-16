@@ -7,6 +7,10 @@ var board = new five.Board();
 var sensorPins = ['A0','A1','A2','A3'];
 var sensors = [];
 
+var readings = [];
+var newReadings = [];
+
+
 /* Initiate sensorPins */
 
 function initiatePins() {
@@ -25,11 +29,39 @@ function readPin(pin) {
 };
 
 function updateAllReadings() {
+
+	newReadings = [];
+
 	for (var i=0; i < sensors.length; i++) {
 		var reading = readPin(sensors[i]);
-		console.log("Pin:", i, reading);
+
+		newReadings[i] = reading;
+
+		// console.log("Pin:", i, reading);
+
 	};
+
+	readings.push(newReadings);
 };
+
+
+/* Write readings to file */
+
+var fs = require('fs');
+
+function writeReadingsToFile() {
+
+	var csv = "LDR1, LDR2, LDR3, LDR4 \n" + readings.join("\n");
+
+	fs.writeFile("log.txt", csv, function(err) {
+	    if(err) {
+	        console.log(err);
+	    } else {
+	        console.log("The file was saved!");
+	    }
+	}); 
+}
+
 
 
 /* Main application */
@@ -44,8 +76,14 @@ board.on("ready", function() {
 
 setInterval(function(){
 	updateAllReadings();
+	
+	writeReadingsToFile();
+
+	// console.log(readings);
+
 	},400);
 
+	
   });
 
 
