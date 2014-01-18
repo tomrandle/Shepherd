@@ -11,8 +11,6 @@ var board = new five.Board();
 
 /* Pins */
 
-
-
 var sensors = [
 	{
 		"position" : "front",
@@ -72,7 +70,7 @@ var solenoids = [
 
 /* Log */
 
-var log = [];
+var logHistory = [];
 
 var logItem = {
 	'time' : 0,
@@ -83,7 +81,7 @@ var logItem = {
 	'topSolenoid' : '',
 	'middleSolenoid' :'',
 	'bottomSolenoid' : ''
-}
+};
 
 /* Variables */
 
@@ -138,8 +136,7 @@ function turnOffSolenoid(pin) {
 }
 
 
-/* Write log file */
-
+/* Upadte log file */
 
 function updateLog() {
 	logItem.time = currentGameTime;
@@ -151,22 +148,14 @@ function updateLog() {
 	logItem.middleSolenoid = solenoids[1].on;
 	logItem.bottomSolenoid = solenoids[2].on;
 
+	logHistory.push(logItem);
 
-	log.push(logItem);
-
-	console.log(log);
-
+	var fs = require('fs');
 }
 
 
-var x = (JSON.stringify(log));
-
-var fs = require('fs');
-
 function writeReadingsToFile() {
-
-
-	fs.writeFile("log.txt", log); 
+	fs.writeFile("log.txt", JSON.stringify(logHistory)); 
 }
 
 
@@ -183,8 +172,8 @@ board.on("ready", function() {
 /* Main loop */
 
 setInterval(function(){
-	updateAllReadings();
 	
+	updateAllReadings();
 	writeReadingsToFile();
 
 	fireSolenoid(solenoids[0].fivePin);
@@ -196,7 +185,6 @@ setInterval(function(){
 	currentGameTime += TIME_INTERVAL;
 
 	},TIME_INTERVAL);
-
 	
   });
 
