@@ -14,28 +14,28 @@ var sensorsNew = [
 		"pin" : 'A0',
 		"fivePin" : '',
 		"lastReading" : '',
-		"readings" :''
+		"readings" :[]
 	},
 	{
 		"position" : "top",
 		"pin" : 'A1',
 		"fivePin" : '',
 		"lastReading" : '',
-		"readings" :''
+		"readings" :[]
 	},
 	{
 		"position" : "top",
 		"pin" : 'A2',
 		"fivePin" : '',
 		"lastReading" : '',
-		"readings" :''
+		"readings" :[]
 	},
 	{
 		"position" : "top",
 		"pin" : 'A3',
 		"fivePin" : '',
 		"lastReading" : '',
-		"readings" :''
+		"readings" :[]
 	}
 ]
 
@@ -96,20 +96,15 @@ function readPin(pin) {
 
 function updateAllReadings() {
 
-	newReadings = [];
-
 	for (var i=0; i < sensorsNew.length; i++) {
+
 		var reading = readPin(sensorsNew[i].fivePin);
 
-		console.log(reading);
-
-		newReadings[i] = reading;
-
-		// console.log("Pin:", i, reading);
+		sensorsNew.lastReading = reading;
+		sensorsNew[i].readings.push(reading);
+		console.log(sensorsNew[i].readings);
 
 	};
-
-	readings.push(newReadings);
 };
 
 /* Fire solenoid */ 
@@ -132,7 +127,16 @@ var fs = require('fs');
 
 function writeReadingsToFile() {
 
-	var csv = "LDR1, LDR2, LDR3, LDR4, Solenoid1, Solenoid2, Solenoid3 \n" + readings.join(";") + solenoidStates.join("\n");
+	var x = [];
+
+	for (var i=0; i < sensorsNew.length; i++) {
+		x[i] = sensorsNew[i].readings;
+	}
+
+
+	var csv = JSON.stringify(x);
+
+
 
 	fs.writeFile("log.txt", csv, function(err) {
 	    // if(err) {
@@ -143,8 +147,6 @@ function writeReadingsToFile() {
 	    // }
 	}); 
 }
-
-
 
 
 /********************/
