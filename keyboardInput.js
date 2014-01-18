@@ -1,23 +1,26 @@
-/* Return new key presses - Adapted from http://stackoverflow.com/questions/5006821/nodejs-how-to-read-keystrokes-from-stdin
- */
+/* 
+    Return new key presses
+    Adapted from 
+*/
 
-var stdin = process.stdin;
+// Set up input - http://stackoverflow.com/questions/5006821/nodejs-how-to-read-keystrokes-from-stdin
+
 var keyPresses  = [];
 
+var stdin = process.stdin;
 
-// without this, we would only get streams once enter is pressed
 stdin.setRawMode( true );
 
-// resume stdin in the parent process (node app won't quit all by itself
-// unless an error or process.exit() happens)
 stdin.resume();
 
-// i don't want binary, do you?
 stdin.setEncoding( 'utf8' );
 
-// on any data into stdin
+
+// Listen for input 
+
 stdin.on( 'data', function( key ){
-  // ctrl-c ( end of text )
+  
+  // Exit if ctrl-c
 
   if ( key === '\u0003' ) {
     process.exit();
@@ -26,12 +29,17 @@ stdin.on( 'data', function( key ){
   keyPresses.push(key);
   console.log(keyPresses);
 
+  // App functions to check impact of keyboard - won't eventually need to be here. 
+
     for (var i=0; i < solenoids.length; i++) {
         queueKeyPresses(solenoids[i]);
         checkIfShouldFire(solenoids[i]);
     };
  
 });
+
+console.log('la la la la');
+
 
 
 var solenoids = [
