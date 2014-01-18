@@ -5,9 +5,39 @@ var board = new five.Board();
 
 /* Pins */
 
-var sensorPins = ['A0','A1','A2','A3'];
 var sensors = [];
 
+
+var sensorsNew = [
+	{
+		"position" : "front",
+		"pin" : 'A0',
+		"fivePin" : '',
+		"lastReading" : '',
+		"readings" :''
+	},
+	{
+		"position" : "top",
+		"pin" : 'A1',
+		"fivePin" : '',
+		"lastReading" : '',
+		"readings" :''
+	},
+	{
+		"position" : "top",
+		"pin" : 'A2',
+		"fivePin" : '',
+		"lastReading" : '',
+		"readings" :''
+	},
+	{
+		"position" : "top",
+		"pin" : 'A3',
+		"fivePin" : '',
+		"lastReading" : '',
+		"readings" :''
+	}
+]
 
 var solenoids = [
     {
@@ -47,8 +77,8 @@ var newReadings = [];
 
 function initiatePins() {
 
-	for (var i=0; i < sensorPins.length; i++) {
-		sensors.push(new five.Pin(sensorPins[i]));
+	for (var i=0; i < sensorsNew.length; i++) {
+		sensorsNew[i].fivePin = new five.Pin(sensorsNew[i].pin);
 	};
 
 	for (var i=0; i < solenoids.length; i++) {
@@ -68,8 +98,10 @@ function updateAllReadings() {
 
 	newReadings = [];
 
-	for (var i=0; i < sensors.length; i++) {
-		var reading = readPin(sensors[i]);
+	for (var i=0; i < sensorsNew.length; i++) {
+		var reading = readPin(sensorsNew[i].fivePin);
+
+		console.log(reading);
 
 		newReadings[i] = reading;
 
