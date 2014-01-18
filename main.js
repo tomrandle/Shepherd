@@ -4,6 +4,8 @@ var TIME_INTERVAL = 400;
 
 var currentGameTime = 0;
 
+var keyPresses  = [];
+
 /* Johnny Five */
 
 var five = require("johnny-five");
@@ -68,6 +70,18 @@ var solenoids = [
 		"unactionedKeypress" : false
 	}];
 
+
+/* Sheep */
+
+var sheepList = [];
+
+var sheep = { 
+        "timeSpotted" : "",
+        "lane" :"",
+        "speed" : "",
+        "expectedArrivalTime" : "",
+    };
+
 /* Log */
 
 var logHistory = [];
@@ -123,9 +137,29 @@ function updateAllReadings() {
 	};
 };
 
-/* Fire solenoid */ 
+/* Check keyboard input and */
 
-var solenoidStates = [0,0,0];
+function queueKeyPresses() {
+    
+	for (var i = 0; i < solenoids.length; i++) {
+
+		var x = i;
+		console.log(keyPresses);
+
+		for(var j = keyPresses.length -1; j >= 0 ; j--) {
+			if (keyPresses[j] == solenoids[x].key)
+			{
+				keyPresses.splice(j, 1);  
+				solenoids[x].unactionedKeypress = true;
+			}
+		};
+	}
+
+};
+
+
+
+/* Fire solenoid */ 
 
 function fireSolenoid(pin) {
 	pin.high();
@@ -133,6 +167,16 @@ function fireSolenoid(pin) {
 
 function turnOffSolenoid(pin) {
 	pin.low();
+}
+
+
+function checkSolenoids() {
+	for (var i = 0; i < solenoids.length; i++) {
+
+		if (solenoids[i].unactionedKeypress === true) {
+			fireSolenoid(solenoids[i].fivePin);
+		};
+	};
 }
 
 
@@ -163,6 +207,36 @@ function writeReadingsToFile() {
 /* Main application */
 /********************/
 
+
+/* Keyboard listening */
+
+
+var stdin = process.stdin;
+
+stdin.setRawMode( true );
+
+stdin.resume();
+
+stdin.setEncoding( 'utf8' );
+
+
+// Listen for input 
+
+stdin.on( 'data', function( key ){
+  
+  // Exit if ctrl-c
+
+  if ( key === '\u0003' ) {
+    process.exit();
+  }
+
+  keyPresses.push(key);
+
+});
+
+
+/* Set up board */
+
 board.on("ready", function() {
 
 	('Applicaton started');
@@ -176,9 +250,12 @@ setInterval(function(){
 	updateAllReadings();
 	writeReadingsToFile();
 
-	fireSolenoid(solenoids[0].fivePin);
-
+	checkSolenoids();
 	// console.log(readings);
+
+
+	console.log(keyPresses);
+	queueKeyPresses();
 
 	updateLog();
 
