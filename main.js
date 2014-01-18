@@ -1,3 +1,9 @@
+/* Constants */
+
+var TIME_INTERVAL = 400;
+
+var currentGameTime = 0;
+
 /* Johnny Five */
 
 var five = require("johnny-five");
@@ -5,10 +11,9 @@ var board = new five.Board();
 
 /* Pins */
 
-var sensors = [];
 
 
-var sensorsNew = [
+var sensors = [
 	{
 		"position" : "front",
 		"pin" : 'A0',
@@ -24,14 +29,14 @@ var sensorsNew = [
 		"readings" :[]
 	},
 	{
-		"position" : "top",
+		"position" : "middle",
 		"pin" : 'A2',
 		"fivePin" : '',
 		"lastReading" : '',
 		"readings" :[]
 	},
 	{
-		"position" : "top",
+		"position" : "bottom",
 		"pin" : 'A3',
 		"fivePin" : '',
 		"lastReading" : '',
@@ -65,6 +70,20 @@ var solenoids = [
 		"unactionedKeypress" : false
 	}];
 
+/* Log */
+
+var log = [];
+
+var logItem = {
+	'time' : 0,
+	'frontLDR' : '',
+	'topLDR' : '',
+	'middleLDR' :'',
+	'bottomLDR' :'',
+	'topSolenoid' : '',
+	'middleSolenoid' :'',
+	'bottomSolenoid' : ''
+}
 
 /* Variables */
 
@@ -77,8 +96,8 @@ var newReadings = [];
 
 function initiatePins() {
 
-	for (var i=0; i < sensorsNew.length; i++) {
-		sensorsNew[i].fivePin = new five.Pin(sensorsNew[i].pin);
+	for (var i=0; i < sensors.length; i++) {
+		sensors[i].fivePin = new five.Pin(sensors[i].pin);
 	};
 
 	for (var i=0; i < solenoids.length; i++) {
@@ -96,13 +115,12 @@ function readPin(pin) {
 
 function updateAllReadings() {
 
-	for (var i=0; i < sensorsNew.length; i++) {
+	for (var i=0; i < sensors.length; i++) {
 
-		var reading = readPin(sensorsNew[i].fivePin);
+		var reading = readPin(sensors[i].fivePin);
 
-		sensorsNew.lastReading = reading;
-		sensorsNew[i].readings.push(reading);
-		console.log(sensorsNew[i].readings);
+		sensors[i].lastReading = reading;
+		sensors[i].readings.push(reading);
 
 	};
 };
@@ -120,32 +138,35 @@ function turnOffSolenoid(pin) {
 }
 
 
-
 /* Write log file */
+
+
+function updateLog() {
+	logItem.time = currentGameTime;
+	logItem.frontLDR = sensors[0].lastReading;
+	logItem.topLDR = sensors[1].lastReading;
+	logItem.middleLDR = sensors[2].lastReading;
+	logItem.bottomLDR = sensors[3].lastReading;
+	logItem.topSolenoid = solenoids[0].on;
+	logItem.middleSolenoid = solenoids[1].on;
+	logItem.bottomSolenoid = solenoids[2].on;
+
+
+	log.push(logItem);
+
+	console.log(log);
+
+}
+
+
+var x = (JSON.stringify(log));
 
 var fs = require('fs');
 
 function writeReadingsToFile() {
 
-	var x = [];
 
-	for (var i=0; i < sensorsNew.length; i++) {
-		x[i] = sensorsNew[i].readings;
-	}
-
-
-	var csv = JSON.stringify(x);
-
-
-
-	fs.writeFile("log.txt", csv, function(err) {
-	    // if(err) {
-	    //     console.log(err);
-	    // } 
-	    // else {
-	    //     console.log("The file was saved!");
-	    // }
-	}); 
+	fs.writeFile("log.txt", log); 
 }
 
 
@@ -155,7 +176,7 @@ function writeReadingsToFile() {
 
 board.on("ready", function() {
 
-	console.log('Applicaton started');
+	('Applicaton started');
 
 	initiatePins();
 
@@ -170,7 +191,11 @@ setInterval(function(){
 
 	// console.log(readings);
 
-	},400);
+	updateLog();
+
+	currentGameTime += TIME_INTERVAL;
+
+	},TIME_INTERVAL);
 
 	
   });
