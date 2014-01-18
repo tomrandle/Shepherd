@@ -24,11 +24,14 @@ stdin.on( 'data', function( key ){
   }
 
   keyPresses.push(key);
-
   console.log(keyPresses);
+
+    for (var i=0; i < solenoids.length; i++) {
+        queueKeyPresses(solenoids[i]);
+        checkIfShouldFire(solenoids[i]);
+    };
+ 
 });
-
-
 
 
 var solenoids = [
@@ -55,11 +58,35 @@ var solenoids = [
 	}];
 
 
+function queueKeyPresses(solenoid) {
+    
+    // Reverse for loop so it works when elements are removed
+
+    for(var i = keyPresses.length -1; i >= 0 ; i--) {
+        if(keyPresses[i] === solenoid.key) {
+            keyPresses.splice(i, 1);  
+            solenoid.unactionedKeypress = true;
+            console.log(solenoid.unactionedKeypress);
+
+        };
+    }}
+
 function checkIfShouldFire(solenoid) {
-    if (!solenoid.on) {
-        console.log('Solenoid not on');
+
+    /* Is there an unactioned keypress? */
+
+    if (solenoid.unactionedKeypress) {
+        console.log ("Fire because there's an unactionedKeypress");
+        solenoid.unactionedKeypress = false;
+        fireSolenoid(solenoid);
     }
+
+    /* Is there a sheep in the queue? */
+
+
 }
 
-checkIfShouldFire(solenoids[0]);
-
+function fireSolenoid(solenoid) {
+    console.log("Firing" + solenoid.position + "solenoid");
+    solenoid.on = true;
+}
