@@ -9,7 +9,7 @@ var sensorPins = ['A0','A1','A2','A3'];
 var sensors = [];
 
 
-var solenoidsNew = [
+var solenoids = [
     {
 		"position" : "top",
 		"pin" : 8,
@@ -51,8 +51,8 @@ function initiatePins() {
 		sensors.push(new five.Pin(sensorPins[i]));
 	};
 
-	for (var i=0; i < solenoidsNew.length; i++) {
-		solenoidsNew[i].fivePin = new five.Pin(solenoidsNew[i].pin);
+	for (var i=0; i < solenoids.length; i++) {
+		solenoids[i].fivePin = new five.Pin(solenoids[i].pin);
 	};
 };
 
@@ -132,7 +132,7 @@ setInterval(function(){
 	
 	writeReadingsToFile();
 
-	fireSolenoid(solenoidsNew[0].fivePin);
+	fireSolenoid(solenoids[0].fivePin);
 
 	// console.log(readings);
 
