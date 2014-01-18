@@ -8,8 +8,33 @@ var board = new five.Board();
 var sensorPins = ['A0','A1','A2','A3'];
 var sensors = [];
 
-var solenoidPins = [8,9,10];
-var solenoids = [];
+
+var solenoidsNew = [
+    {
+		"position" : "top",
+		"pin" : 8,
+		"fivePin" : '',
+		"key" : "i",
+		"on" : false,
+		"unactionedKeypress" : false
+	},
+	{
+		"position" : "middle",
+		"pin" : 9,
+		"fivePin" : '',
+		"key" : "o",
+		"on" : false,
+		"unactionedKeypress" : false
+	},
+    {
+		"position" : "bottom",
+		"fivePin" : '',
+		"pin" : 10,
+		"key" : "p",
+		"on" : false,
+		"unactionedKeypress" : false
+	}];
+
 
 /* Variables */
 
@@ -26,8 +51,8 @@ function initiatePins() {
 		sensors.push(new five.Pin(sensorPins[i]));
 	};
 
-	for (var i=0; i < solenoidPins.length; i++) {
-		solenoids.push(new five.Pin(solenoidPins[i]));
+	for (var i=0; i < solenoidsNew.length; i++) {
+		solenoidsNew[i].fivePin = new five.Pin(solenoidsNew[i].pin);
 	};
 };
 
@@ -90,7 +115,9 @@ function writeReadingsToFile() {
 
 
 
+/********************/
 /* Main application */
+/********************/
 
 board.on("ready", function() {
 
@@ -105,7 +132,7 @@ setInterval(function(){
 	
 	writeReadingsToFile();
 
-	fireSolenoid(solenoids[0]);
+	fireSolenoid(solenoidsNew[0].fivePin);
 
 	// console.log(readings);
 
