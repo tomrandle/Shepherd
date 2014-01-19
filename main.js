@@ -5,9 +5,12 @@
 /* Constants */
 
 var TIME_INTERVAL = 400;
-var KEY_DURATION = 800;
+var KEY_DURATION = 400;
 
 /* Global variables */
+
+var date = new Date()
+var timeGameStarted = date.getTime();
 
 var currentGameTime = 0;
 var keyPresses  = [];
@@ -16,6 +19,8 @@ function keyPress(key, timePressed) {
     this.key = key;
     this.timePressed = timePressed;
 }
+
+
 
 
 var sensors = [
@@ -207,12 +212,13 @@ var fs = require('fs');
 
 function writeReadingsToFile() {
 
-
-
-    fs.writeFile("log.txt", JSON.stringify(logHistory));
+    var filePath = "log/log-" + timeGameStarted + ".json";
+    fs.writeFile(filePath, JSON.stringify(logHistory));
 }
 
-
+function alertTerminal(){
+  console.log("\007");
+}
 
 /********************/
 /* Main application */
