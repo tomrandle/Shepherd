@@ -4,7 +4,7 @@
 
 /* Constants */
 
-var TIME_INTERVAL = 400;
+var TIME_INTERVAL = 100;
 var KEY_DURATION = 400;
 
 /* Global variables */
@@ -20,34 +20,31 @@ function keyPress(key, timePressed) {
     this.timePressed = timePressed;
 }
 
-
-
-
 var sensors = [
     {
         "position" : "front",
-        "pin" : 'A0',
+        "pin" : 'A3',
         "fivePin" : '',
         "lastReading" : '',
         "readings" :[]
     },
     {
         "position" : "top",
-        "pin" : 'A1',
+        "pin" : 'A0',
         "fivePin" : '',
         "lastReading" : '',
         "readings" :[]
     },
     {
         "position" : "middle",
-        "pin" : 'A2',
+        "pin" : 'A1',
         "fivePin" : '',
         "lastReading" : '',
         "readings" :[]
     },
     {
         "position" : "bottom",
-        "pin" : 'A3',
+        "pin" : 'A2',
         "fivePin" : '',
         "lastReading" : '',
         "readings" :[]
@@ -57,7 +54,7 @@ var sensors = [
 var solenoids = [
     {
         "position" : "top",
-        "pin" : 8,
+        "pin" : 10,
         "fivePin" : '',
         "key" : "i",
         "on" : false,
@@ -74,7 +71,7 @@ var solenoids = [
     {
         "position" : "bottom",
         "fivePin" : '',
-        "pin" : 10,
+        "pin" : 8,
         "key" : "p",
         "on" : false,
         "activeKeypress" : false
@@ -102,7 +99,6 @@ function logItem(time, frontLDR, topLDR, middleLDR, bottomLDR, topSolenoid, midd
     this.middleSolenoid = middleSolenoid;
     this.bottomSolenoid = bottomSolenoid;
 }
-
 
 
 
@@ -189,7 +185,7 @@ function checkSolenoids() {
 }
 
 
-/* Upadte log file */
+/* Update log file */
 
 function updateLog() {
 
@@ -212,9 +208,49 @@ var fs = require('fs');
 
 function writeReadingsToFile() {
 
+    // JSON File
+
     var filePath = "log/log-" + timeGameStarted + ".json";
     fs.writeFile(filePath, JSON.stringify(logHistory));
+
+    // CSV File
+
+    var csvHeadings = ''; 
+    var csvValues = '';
+
+    for(var key in logHistory[0]) {
+        csvHeadings = csvHeadings + key + ",";
+    }
+
+    for (var i = 0; i < logHistory.length; i++) {
+        var valueRow = '';
+        var j = i;
+            for(var key in logHistory[j]) {
+
+                var value = logHistory[j][key];
+
+                // Swap solenoid states to numbers to make analysis easier. 
+                if (value === true) {
+                    value = 1024;
+                }
+
+                if (value === false) {
+                    value = 0;
+                }
+
+                valueRow = valueRow + value + ",";
+            }   
+
+            csvValues = csvValues + "\n" + valueRow;
+    }
+
+    var csvContent = "\n" + csvHeadings + csvValues;
+
+    var filePath = "log/log-" + timeGameStarted + ".csv";
+    fs.writeFile(filePath, csvContent);
+
 }
+
 
 function alertTerminal(){
   console.log("\007");
