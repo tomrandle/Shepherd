@@ -2,19 +2,24 @@
 var data = require('./log/log-1390162215609.json');
 
 var readings = [];
-var latestReadings = [];
+var shortReadings = [];
+var mediumReadings = [];
+var shortLength = 2;
+var mediumLength = 20;
 
-var setSize = 10;
+var shortAverage = [];
+var mediumAverage = [];
 
-for (var i = 0; i < data.length; i++) {
-	readings.push(data[i].middleLDR);
-}
+var triggerThreshold = 1.05;
 
-for (var i = readings.length - setSize; i < readings.length; i++) {
-	latestReadings.push(readings[i]);
-}
+var numberOfSheep = 0;
+var expectedNumberofSheep = 3;
+
+var activeSheep = false;
 
 
+
+// Functions
 
 function calculateAverage(array) {
 
@@ -30,11 +35,62 @@ function calculateAverage(array) {
 	return average;
 }
 
+function createArray(array, size) {
+
+	var newArray = [];
+
+	for (var i = array.length - size; i < array.length; i++) {
+		newArray.push(array[i]);
+	}
+
+	return newArray;
+}
+
+function checkThresholds(array1, array2, threshold) {
+
+	// console.log (array2 / array1);
+
+	var div = array2 / array1;
+	if (div > triggerThreshold) {
+
+		if (activeSheep === false) {
+			activeSheep = true;
+			console.log('Spotted!' + div);
+			numberOfSheep++;
+		}
+	}
+
+		else {
+			activeSheep = false;
+		}
+}
 
 
-console.log(readings);
-console.log(latestReadings);
+// Main loop
 
-console.log(calculateAverage(readings));
-console.log(calculateAverage(latestReadings));
+for (var i = 0; i < data.length; i++) {
+
+	// 'Get' readings
+	readings.push(data[i].bottomLDR);
+
+
+	// Populate latest array
+
+	var shortReadings = createArray(readings, shortLength);
+	var mediumReadings = createArray(readings, mediumLength);
+
+	// Calculate averages 
+
+	calculateAverage(readings);
+	var mediumAverage = calculateAverage(mediumReadings);
+	var shortAverage = calculateAverage(shortReadings);
+
+	// Check trigger 
+
+	checkThresholds(shortAverage,mediumAverage, triggerThreshold);
+	 
+}
+
+
+
 
