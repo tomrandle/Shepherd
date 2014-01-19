@@ -5,11 +5,18 @@
 /* Constants */
 
 var TIME_INTERVAL = 400;
+var KEY_DURATION = 800;
 
 /* Global variables */
 
 var currentGameTime = 0;
 var keyPresses  = [];
+
+function keyPress(key, timePressed) {
+    this.key = key;
+    this.timePressed = timePressed;
+}
+
 
 var sensors = [
     {
@@ -49,7 +56,7 @@ var solenoids = [
         "fivePin" : '',
         "key" : "i",
         "on" : false,
-        "unactionedKeypress" : false
+        "activeKeypress" : false
     },
     {
         "position" : "middle",
@@ -57,7 +64,7 @@ var solenoids = [
         "fivePin" : '',
         "key" : "o",
         "on" : false,
-        "unactionedKeypress" : false
+        "activeKeypress" : false
     },
     {
         "position" : "bottom",
@@ -65,18 +72,18 @@ var solenoids = [
         "pin" : 10,
         "key" : "p",
         "on" : false,
-        "unactionedKeypress" : false
+        "activeKeypress" : false
     }
 ];
 
 var sheepList = [];
 
-var sheep = {
-    "timeSpotted" : "",
-    "lane" :"",
-    "speed" : "",
-    "expectedArrivalTime" : ""
-};
+function sheep(timeSpotted, lane, speed, expectedArrivalTime) {
+    this.timeSpotted = timeSpotted;
+    this.lane = expectedArrivalTime;
+    this.speed = speed;
+    this.expectedArrivalTime;
+}
 
 var logHistory = [];
 
@@ -90,6 +97,8 @@ function logItem(time, frontLDR, topLDR, middleLDR, bottomLDR, topSolenoid, midd
     this.middleSolenoid = middleSolenoid;
     this.bottomSolenoid = bottomSolenoid;
 }
+
+
 
 
 /* Initiate Pins */
@@ -120,24 +129,26 @@ function updateAllReadings() {
 
         sensors[i].lastReading = reading;
         sensors[i].readings.push(reading);
-
     }
 }
 
 /* Check keyboard input */
 
 function queueKeyPresses() {
-    
+   
     for (var i = 0; i < solenoids.length; i++) {
 
         var x = i;
-        console.log(keyPresses);
+        solenoids[x].activeKeypress = false;
 
-        for(var j = keyPresses.length -1; j >= 0 ; j--) {
-            if (keyPresses[j] == solenoids[x].key)
-            {
-                keyPresses.splice(j, 1);
-                solenoids[x].unactionedKeypress = true;
+        for(var j = 0; j < keyPresses.length; j++) {
+
+            // Todo: Remove old presses
+            // Check if key matches
+
+            if (keyPresses[j].key === solenoids[x].key && keyPresses[j].timePressed + KEY_DURATION > currentGameTime )
+            {      
+                solenoids[x].activeKeypress = true;
             }
         }
     }
@@ -152,8 +163,8 @@ function fireSolenoid(solenoid) {
 }
 
 function turnOffSolenoid(solenoid) {
-    solenoids[solenoid].fivePin.high();
-    solenoids[solenoid].on  = true;
+    solenoids[solenoid].fivePin.low();
+    solenoids[solenoid].on  = false;
 }
 
 function checkSolenoids() {
@@ -162,8 +173,12 @@ function checkSolenoids() {
 
     /* Read current state */
 
-        if (solenoids[i].unactionedKeypress === true) {
+        if (solenoids[i].activeKeypress === true) {
             fireSolenoid(i);
+        }
+
+        else {
+            turnOffSolenoid(i);
         }
     }
 }
@@ -173,7 +188,7 @@ function checkSolenoids() {
 
 function updateLog() {
 
-    var latestLog = new logItem (
+    var latestLog = new logItem(
         currentGameTime,
         sensors[0].lastReading,
         sensors[1].lastReading,
@@ -182,8 +197,7 @@ function updateLog() {
         solenoids[0].on,
         solenoids[1].on,
         solenoids[2].on
-    )
-    
+    );
 
     logHistory.push(latestLog);
 
@@ -194,7 +208,6 @@ var fs = require('fs');
 function writeReadingsToFile() {
 
 
-    console.log(logHistory);
 
     fs.writeFile("log.txt", JSON.stringify(logHistory));
 }
@@ -222,7 +235,10 @@ stdin.on( 'data', function( key ) {
     if ( key === '\u0003' ) {
         process.exit();
     }
-    keyPresses.push(key);
+
+    lastKeyPress = new keyPress(key, currentGameTime);
+    keyPresses.push(lastKeyPress);
+
 });
 
 
@@ -250,8 +266,6 @@ setInterval(function(){
     checkSolenoids();
     // console.log(readings);
 
-
-    console.log(keyPresses);
     queueKeyPresses();
 
     updateLog();
