@@ -100,7 +100,10 @@ function logItem(time, frontLDR, topLDR, middleLDR, bottomLDR, topSolenoid, midd
     this.bottomSolenoid = bottomSolenoid;
 }
 
-
+function reading(time, value) {
+    this.time = time;
+    this.value = value;
+}
 
 /* Initiate Pins */
 
@@ -126,10 +129,10 @@ function updateAllReadings() {
 
     for (var i=0; i < sensors.length; i++) {
 
-        var reading = readPin(sensors[i].fivePin);
+        var latestReading = new reading(currentGameTime, readPin(sensors[i].fivePin))
 
-        sensors[i].lastReading = reading;
-        sensors[i].readings.push(reading);
+        sensors[i].lastReading = latestReading.value;
+        sensors[i].readings.push(latestReading);
     }
 }
 
@@ -251,9 +254,12 @@ function writeReadingsToFile() {
 
 }
 
-
 function alertTerminal(){
   console.log("\007");
+}
+
+function checkData() {
+
 }
 
 /********************/
@@ -305,8 +311,11 @@ setInterval(function(){
     updateAllReadings();
     writeReadingsToFile();
 
+    checkData();
+
     checkSolenoids();
-    // console.log(readings);
+    
+    // console.log(sensors[0].readings);
 
     queueKeyPresses();
 
