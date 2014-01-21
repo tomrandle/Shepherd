@@ -4,11 +4,16 @@ var SHORT_LENGTH = 2;
 var MEDIUM_LENGTH = 20;
 var TRIGGER_THRESHOLD = 1.05;
 
+
+// Global variables
+
 var numberOfSheep = 0;
 var expectedNumberofSheep = 3;
 
 var activeSheep = false;
 
+
+// Functions
 
 function Reading(time, value) {
 	    this.time = time;
@@ -54,8 +59,7 @@ function createArray(array, size) {
 
 function checkThresholds(value1, value2, threshold) {
 
-
-		var div = value1.value / value2.value;
+	var div = value1.value / value2.value;
 		if (div > TRIGGER_THRESHOLD) {
 
 			if (activeSheep === false) {
@@ -66,6 +70,7 @@ function checkThresholds(value1, value2, threshold) {
 		}
 
 			else {
+				// console.log('No sheep');
 				activeSheep = false;
 			}
 	}
@@ -88,7 +93,6 @@ exports.checkForSheep = function (data) {
 
 	// Calculate averages 
 
-	calculateAverage(readings);
 	var mediumAverage = calculateAverage(mediumReadings);
 	var shortAverage = calculateAverage(shortReadings);
 
