@@ -1,6 +1,13 @@
+// Constants
 
-// var data = require('./log/log-1390162215609.json');
-var data = require('./log/log-1390162215609.json');
+var SHORT_LENGTH = 2;
+var MEDIUM_LENGTH = 20;
+var TRIGGER_THRESHOLD = 1.05;
+
+var numberOfSheep = 0;
+var expectedNumberofSheep = 3;
+
+var activeSheep = false;
 
 
 function Reading(time, value) {
@@ -9,55 +16,26 @@ function Reading(time, value) {
 	}
 
 
-exports.checkForSheep = function () {
+function calculateAverage(array) {
 
-	// Constants
+	var total = 0;
+	var length = array.length;
 
-	var SHORT_LENGTH = 2;
-	var MEDIUM_LENGTH = 20;
-	var TRIGGER_THRESHOLD = 1.05;
+	// console.log(length);
 
-	// Readings to replace with main object;
+	for (var i=0; i < length; i++)
+	{
+		// console.log(array);
+		total = total + array[i].value;
+	}	
 
-	var readings = [];
-
-
-	var shortReadings = [];
-	var mediumReadings = [];
-
-	var shortAverage = [];
-	var mediumAverage = [];
-
-
-	var numberOfSheep = 0;
-	var expectedNumberofSheep = 3;
-
-	var activeSheep = false;
+	var average = total / length;
+	var time = array[length - 1].time;
+	return new Reading(time,average);
+}
 
 
-
-	// Functions
-
-	function calculateAverage(array) {
-
-		var total = 0;
-		var length = array.length;
-
-		// console.log(length);
-
-		for (var i=0; i < length; i++)
-		{
-			// console.log(array);
-			total = total + array[i].value;
-		}	
-
-		var average = total / length;
-		var time = array[length - 1].time;
-		return new Reading(time,average);
-	}
-
-
-	function createArray(array, size) {
+function createArray(array, size) {
 
 		var newArray = [];
 
@@ -73,7 +51,8 @@ exports.checkForSheep = function () {
 		return newArray;
 	}
 
-	function checkThresholds(value1, value2, threshold) {
+
+function checkThresholds(value1, value2, threshold) {
 
 
 		var div = value1.value / value2.value;
@@ -92,46 +71,34 @@ exports.checkForSheep = function () {
 	}
 
 
+exports.checkForSheep = function (data) {
 
+	var readings = data;
 
+	var shortReadings = [];
+	var mediumReadings = [];
 
+	var shortAverage = [];
+	var mediumAverage = [];
 
-	// Main loop
+	// Populate latest array
 
-	for (var i = 0; i < data.length; i++) {
+	var shortReadings = createArray(readings, SHORT_LENGTH);
+	var mediumReadings = createArray(readings, MEDIUM_LENGTH);
 
-		// 'Get' readings
+	// Calculate averages 
 
-		var sensorReading = data[i].bottomLDR;
-		var readingTime = data[i].time;
+	calculateAverage(readings);
+	var mediumAverage = calculateAverage(mediumReadings);
+	var shortAverage = calculateAverage(shortReadings);
 
+	// Check trigger 
 
-		var reading = new Reading(readingTime,sensorReading);
-		readings.push(reading);
-
-
-
-		// Populate latest array
-
-		var shortReadings = createArray(readings, SHORT_LENGTH);
-		var mediumReadings = createArray(readings, MEDIUM_LENGTH);
-
-
-
-		// // Calculate averages 
-
-		calculateAverage(readings);
-		var mediumAverage = calculateAverage(mediumReadings);
-		var shortAverage = calculateAverage(shortReadings);
-
-		// // Check trigger 
-
-		checkThresholds(shortAverage,mediumAverage, TRIGGER_THRESHOLD);
+	checkThresholds(shortAverage,mediumAverage, TRIGGER_THRESHOLD);
 		 
-	}
+}
 
 
-};
 
 
 
