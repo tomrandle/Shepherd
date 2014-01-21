@@ -26,7 +26,7 @@ var sensors = [
         "pin" : 'A3',
         "fivePin" : '',
         "lastReading" : '',
-        "readings" :[]
+        "readings" :[], 
     },
     {
         "position" : "top",
@@ -82,7 +82,7 @@ var sheepList = [];
 
 function sheep(timeSpotted, lane, speed, expectedArrivalTime) {
     this.timeSpotted = timeSpotted;
-    this.lane = expectedArrivalTime;
+    this.lane = lane;
     this.speed = speed;
     this.expectedArrivalTime;
 }
