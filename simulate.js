@@ -21,8 +21,9 @@ for (var i = 0; i < data.length; i++) {
 
 	 for(var key in data[0]) {
         
-    	if (key === 'topLDR' || 'bottomLDR' || 'middleLDR') {
+    	if (key === 'topLDR' || key === 'bottomLDR' || key === 'middleLDR') {
 
+    		console.log(key);
     		var sensorReading = data[i][key];
 			var readingTime = data[i].time;
 
