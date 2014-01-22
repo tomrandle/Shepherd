@@ -16,90 +16,90 @@ var activeSheep = false;
 // Functions
 
 function Reading(time, value) {
-	    this.time = time;
-	    this.value = value;
-	}
+    this.time = time;
+    this.value = value;
+}
 
 
 function calculateAverage(array) {
 
-	var total = 0;
-	var length = array.length;
+    var total = 0;
+    var length = array.length;
 
-	// console.log(length);
+    // console.log(length);
 
-	for (var i=0; i < length; i++)
-	{
-		// console.log(array);
-		total = total + array[i].value;
-	}	
+    for (var i=0; i < length; i++)
+    {
+        // console.log(array);
+        total = total + array[i].value;
+    }   
 
-	var average = total / length;
-	var time = array[length - 1].time;
-	return new Reading(time,average);
+    var average = total / length;
+    var time = array[length - 1].time;
+    return new Reading(time,average);
 }
 
 
 function createArray(array, size) {
 
-		var newArray = [];
+        var newArray = [];
 
-		// If not enough data yet 
-		if (array.length < size) {
-			size = array.length
-		}
+        // If not enough data yet 
+        if (array.length < size) {
+            size = array.length
+        }
 
-		for (var i = array.length - size; i < array.length; i++) {
-			newArray.push(array[i]);
-		}
+        for (var i = array.length - size; i < array.length; i++) {
+            newArray.push(array[i]);
+        }
 
-		return newArray;
-	}
+        return newArray;
+    }
 
 
 function checkThresholds(value1, value2, threshold) {
 
-	var div = value1.value / value2.value;
-		if (div > TRIGGER_THRESHOLD) {
+    var div = value1.value / value2.value;
+        if (div > TRIGGER_THRESHOLD) {
 
-			if (activeSheep === false) {
-				activeSheep = true;
-				console.log('Spotted a sheep @ ' + value1.time + ' with a ratio of : ' + div);
-				numberOfSheep++;
-			}
-		}
+            if (activeSheep === false) {
+                activeSheep = true;
+                console.log('Spotted a sheep @ ' + value1.time + ' with a ratio of : ' + div);
+                numberOfSheep++;
+            }
+        }
 
-			else {
-				// console.log('No sheep');
-				activeSheep = false;
-			}
-	}
+            else {
+                // console.log('No sheep');
+                activeSheep = false;
+            }
+    }
 
 
 exports.checkForSheep = function (data, activeSheep) {
 
-	var readings = data;
+    var readings = data;
 
-	var shortReadings = [];
-	var mediumReadings = [];
+    var shortReadings = [];
+    var mediumReadings = [];
 
-	var shortAverage = [];
-	var mediumAverage = [];
+    var shortAverage = [];
+    var mediumAverage = [];
 
-	// Populate latest array
+    // Populate latest array
 
-	var shortReadings = createArray(readings, SHORT_LENGTH);
-	var mediumReadings = createArray(readings, MEDIUM_LENGTH);
+    var shortReadings = createArray(readings, SHORT_LENGTH);
+    var mediumReadings = createArray(readings, MEDIUM_LENGTH);
 
-	// Calculate averages 
+    // Calculate averages 
 
-	var mediumAverage = calculateAverage(mediumReadings);
-	var shortAverage = calculateAverage(shortReadings);
+    var mediumAverage = calculateAverage(mediumReadings);
+    var shortAverage = calculateAverage(shortReadings);
 
-	// Check trigger 
+    // Check trigger 
 
-	checkThresholds(shortAverage,mediumAverage, TRIGGER_THRESHOLD);
-		 
+    checkThresholds(shortAverage,mediumAverage, TRIGGER_THRESHOLD);
+         
 }
 
 var sheepList = [];
