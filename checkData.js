@@ -76,7 +76,7 @@ function checkThresholds(value1, value2, threshold) {
 	}
 
 
-exports.checkForSheep = function (data) {
+exports.checkForSheep = function (data, activeSheep) {
 
 	var readings = data;
 
@@ -100,6 +100,15 @@ exports.checkForSheep = function (data) {
 
 	checkThresholds(shortAverage,mediumAverage, TRIGGER_THRESHOLD);
 		 
+}
+
+var sheepList = [];
+
+function sheep(timeSpotted, lane, speed, expectedArrivalTime) {
+    this.timeSpotted = timeSpotted;
+    this.lane = lane;
+    this.speed = speed;
+    this.expectedArrivalTime;f
 }
 
 

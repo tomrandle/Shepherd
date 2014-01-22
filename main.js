@@ -78,14 +78,6 @@ var solenoids = [
     }
 ];
 
-var sheepList = [];
-
-function sheep(timeSpotted, lane, speed, expectedArrivalTime) {
-    this.timeSpotted = timeSpotted;
-    this.lane = lane;
-    this.speed = speed;
-    this.expectedArrivalTime;
-}
 
 var logHistory = [];
 

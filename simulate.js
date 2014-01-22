@@ -33,7 +33,7 @@ for (var i = 0; i < data.length; i++) {
 			// Actual function we're testing
 
 			var checkData = require('./checkData');
-			checkData.checkForSheep(readings);
+			checkData.checkForSheep(readings, false);
 
     	}
     }	
