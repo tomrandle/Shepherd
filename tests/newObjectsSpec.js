@@ -25,6 +25,8 @@ describe("Hello world", function() {
 
         var x = new Sensor(1, 2,3);
 
-        expect(x.helloWorld()).toEqual("Hello world!");
+        expect(x.helloWorld()).toEqual("Hello wowrld!");
+        expect(x.bah).toEqual("bha");
+
     });
 });
