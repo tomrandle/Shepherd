@@ -8,26 +8,13 @@ var five = require("johnny-five");
 var SHORT_AVERAGE_LENGTH = 2;
 var MEDIUM_AVERAGE_LENGTH = 10;
 var GAME_INTERVAL = 100;
+var SOLENOID_PRESS_TIME = 300;
 
 /* Global Variables */ 
 
 var currentTime = 0;
 
-
-
-
-// game
-    //sensor
-    // lanes
-
-    // lane
-        // sensor
-            //readings
-        // sheep
-        // solenoid
-// Sensor
-    // Readings
-
+var keyPresses = [];
 
 
 /*Objects*/
@@ -38,7 +25,6 @@ function game() {
 
     var stdin = process.stdin;
 
-    var keyPresses = [];
 
     stdin.setRawMode( true );
     stdin.resume();
@@ -130,7 +116,25 @@ function Lane(sensorPin, sensorThreshold, sensorDelay, solenoidPin, solenoidKey)
 
     this.decideWhetherToFireSolenoid = function () {
 
-        this.solenoid.fireSolenoid();
+        // Check if keyboard pressed 
+
+        for (var i=0; i < keyPresses.length; i++) {
+
+            var timeKeyPressed = keyPresses[i].timePressed;
+
+            if (keyPresses[i].key === solenoidKey && currentTime < timeKeyPressed + SOLENOID_PRESS_TIME) {
+                this.solenoid.fireSolenoid();
+            }
+
+            else {
+                this.solenoid.turnOffSolenoid();
+            }
+        }
+        
+        // Check if sheep arrived
+
+        
+    
 
     }
 
