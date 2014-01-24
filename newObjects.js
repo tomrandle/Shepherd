@@ -1,13 +1,19 @@
+
+/* Includes */
+
+var five = require("johnny-five");
+
 /* Constants */ 
 
 var SHORT_AVERAGE_LENGTH = 2;
 var MEDIUM_AVERAGE_LENGTH = 10;
-
 var GAME_INTERVAL = 100;
 
 /* Global Variables */ 
 
 var currentTime = 0;
+
+
 
 
 // game
@@ -26,17 +32,34 @@ var currentTime = 0;
 
 /*Objects*/
 
-
-
-
 function game() {
+
+    // Keyboard input
+
+    var stdin = process.stdin;
+
+    var keyPresses = [];
+
+    stdin.setRawMode( true );
+    stdin.resume();
+    stdin.setEncoding( 'utf8' );
+
+    stdin.on( 'data', function( key ) {
+
+      // Exit if ctrl-c
+        if ( key === '\u0003' ) {
+            process.exit();
+        }
+
+        lastKeyPress = new keyPress(key, currentTime);
+        keyPresses.push(lastKeyPress);
+
+    });
+
 
     // Connect to board
 
-    var five = require("johnny-five");
     var board = new five.Board();
-
-    // Set up keyboard
 
     board.on("ready", function() {
 
@@ -57,11 +80,11 @@ function game() {
             topLane.sensor.takeReading();
             console.log(topLane.sensor.ratioOfAverages());
             topLane.updateSheep();
+
+            topLane.decideWhetherToFireSolenoid();
+            
             // Update time 
-
             console.log(currentTime);
-
-
             currentTime = currentTime + GAME_INTERVAL;
 
          }, GAME_INTERVAL);
@@ -75,15 +98,17 @@ game();
 
 
 function Lane(sensorPin, sensorThreshold, sensorDelay, solenoidPin, solenoidKey) {
-    this.sensorPin = sensorPin;
-    this.sensorThreshold = sensorThreshold;
-    this.sensorDelay = sensorDelay;
-    this.solenoidPin = solenoidPin;
-    this.solenoidKey = solenoidKey;
+    
+    // this.sensorPin = sensorPin;
+    // this.sensorThreshold = sensorThreshold;
+    // this.sensorDelay = sensorDelay;
+    // this.solenoidPin = solenoidPin;
+    // this.solenoidKey = solenoidKey;
+
     this.sensor = new Sensor (sensorPin, sensorThreshold);
+    this.solenoid = new Solenoid (solenoidPin);
 
     this.alreadyActive = false; 
-
     this.sheepQueue = [];
 
     this.activeSensor = function () {
@@ -103,6 +128,12 @@ function Lane(sensorPin, sensorThreshold, sensorDelay, solenoidPin, solenoidKey)
    
     }
 
+    this.decideWhetherToFireSolenoid = function () {
+
+        this.solenoid.fireSolenoid();
+
+    }
+
 
 
 }
@@ -114,7 +145,6 @@ function Sensor(pin, threshold) {
     this.pin = pin;
     this.threshold = threshold;
 
-    var five = require("johnny-five"); // Do i really need to require this again?
 
     this.fivePin = new five.Pin(pin);
 
@@ -163,6 +193,26 @@ function Sensor(pin, threshold) {
     }
 }
 
+
+
+function Solenoid (pin) {
+
+    this.pin = pin;
+    this.fivePin = new five.Pin(pin);
+    this.currentlyFiring = false;
+
+    this.fireSolenoid = function() {
+        this.fivePin.high();
+        this.currentlyFiring = true;
+    }
+
+    this.turnOffSolenoid = function() {
+        this.fivePin.low();
+        this.currentlyFiring = false;
+    }
+}
+
+
 function Sheep (timeSpotted) {
     this.timeSpotted = timeSpotted;
     this.activeSheep = false;
@@ -174,6 +224,10 @@ function Reading(time,value) {
     this.value = value;
 }
 
+function keyPress(key, timePressed) {
+    this.key = key;
+    this.timePressed = timePressed;
+}
 
 
 
