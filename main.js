@@ -1,9 +1,13 @@
+// Todo: make it possible to save the light thresholds and make them read from a file. 
+
 
 /* Includes */
 
 var five = require("johnny-five");
 var Sensor = require('./sensor.js');
 var Solenoid = require('./solenoid.js');
+var Led = require('./Led.js');
+
 
 /* Constants */ 
 
@@ -34,18 +38,18 @@ function game() {
         var lanes = [
             {
                 'name' : 'topLane',
-                'lane' : new Lane('A0',1.05,1400,10,'i'),
-                'differenceToFrontSensorRequiredForGameToStart' : 1.3
+                'lane' : new Lane('A0',1.02,500,10,'i',3),
+                'differenceToFrontSensorRequiredForGameToStart' : 1.05
             },
             {
                 'name' : 'middleLane',
-                'lane' : new Lane('A1',1.05,1400,9,'o'),
-                'differenceToFrontSensorRequiredForGameToStart' : 1.3
+                'lane' : new Lane('A1',1.02,500,9,'o',4),
+                'differenceToFrontSensorRequiredForGameToStart' : 1.05
             },
             {
                 'name' : 'bottomLane',
-                'lane' : new Lane('A2',1.05,1400,8,'p'),
-                'differenceToFrontSensorRequiredForGameToStart' : 0.9
+                'lane' : new Lane('A2',1.02,500,8,'p',5),
+                'differenceToFrontSensorRequiredForGameToStart' : 0.90
             }
         ];
 
@@ -88,16 +92,18 @@ function game() {
                 lanes[2].lane.sensor.mediumAverage() * lanes[2].differenceToFrontSensorRequiredForGameToStart
             ]
 
-            if (gameSensorValue > testValues[0] && gameSensorValue > testValues[1] && testValues[2])
-            {
-                gameRunning = true;
-            }
 
-            else {
-                gameRunning = false;
-                console.log('Game not running');
 
-            }
+            // if (gameSensorValue > testValues[0] && gameSensorValue > testValues[1] && testValues[2])
+            // {
+            //     gameRunning = true;
+            // }
+
+            // else {
+            //     gameRunning = false;
+            //     console.log(gameSensorValue, testValues[0], testValues[1],testValues[2]);
+
+            // }
 
         }, GAME_INTERVAL);
 
@@ -106,10 +112,11 @@ function game() {
 
 game();
 
-function Lane(sensorPin, sensorThreshold, sensorDelay, solenoidPin, solenoidKey) {
+function Lane(sensorPin, sensorThreshold, sensorDelay, solenoidPin, solenoidKey, ledPin) {
     
     this.sensor = new Sensor (sensorPin, sensorThreshold);
     this.solenoid = new Solenoid (solenoidPin);
+    this.led = new Led (ledPin);
     this.alreadyActive = false; 
     this.sheepQueue = [];
 
@@ -121,7 +128,7 @@ function Lane(sensorPin, sensorThreshold, sensorDelay, solenoidPin, solenoidKey)
         if (this.activeSensor() === true && this.alreadyActive === false)
         {
             this.alreadyActive = true;
-
+            this.led.turnLedOn();
             var newSheep = new Sheep(currentTime());
 
             beep();
@@ -130,6 +137,7 @@ function Lane(sensorPin, sensorThreshold, sensorDelay, solenoidPin, solenoidKey)
             
         else if (this.activeSensor() === false) {
             this.alreadyActive = false;
+            this.led.turnLedOff();
         }
     }
 
@@ -155,8 +163,6 @@ function Lane(sensorPin, sensorThreshold, sensorDelay, solenoidPin, solenoidKey)
         for (var i=0; i < this.sheepQueue.length; i++) {
 
             var timeSpotted = this.sheepQueue[i].timeSpotted;
-
-            console.log('Current time: ' + currentTime() + '  Expected time: ' + timeSpotted + sensorDelay + SOLENOID_PRESS_TIME);
 
             if (currentTime() < timeSpotted + sensorDelay + SOLENOID_PRESS_TIME && currentTime() > timeSpotted + sensorDelay) {
                 this.solenoid.fireSolenoid();
