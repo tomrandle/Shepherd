@@ -43,11 +43,9 @@ function game() {
             // Do all the checks
 
             topLane.sensor.takeReading();
-            console.log(topLane.sensor.ratioOfAverages());
             topLane.updateSheep();
 
             topLane.decideWhetherToFireSolenoid();
-            
 
          }, GAME_INTERVAL);
 
@@ -72,7 +70,7 @@ function Lane(sensorPin, sensorThreshold, sensorDelay, solenoidPin, solenoidKey)
         {
             this.alreadyActive = true;
 
-            var newSheep = new Sheep(currentTime);
+            var newSheep = new Sheep(currentTime());
 
             beep();
             this.sheepQueue.push(newSheep); 
@@ -105,6 +103,8 @@ function Lane(sensorPin, sensorThreshold, sensorDelay, solenoidPin, solenoidKey)
         for (var i=0; i < this.sheepQueue.length; i++) {
 
             var timeSpotted = this.sheepQueue[i].timeSpotted;
+
+            console.log('Current time: ' + currentTime() + '  Expected time: ' + timeSpotted + sensorDelay + SOLENOID_PRESS_TIME);
 
             if (currentTime() < timeSpotted + sensorDelay + SOLENOID_PRESS_TIME && currentTime() > timeSpotted + sensorDelay) {
                 this.solenoid.fireSolenoid();
