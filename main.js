@@ -1,6 +1,5 @@
 // Todo: make it possible to save the light thresholds and make them read from a file. 
 
-
 /* Includes */
 
 var five = require("johnny-five");
@@ -17,7 +16,7 @@ var SOLENOID_PRESS_TIME = 300;
 /* Global Variables */ 
 
 var keyPresses = [];
-var gameRunning = true;
+var gameRunning = false;
 
 /*Objects*/
 
@@ -33,23 +32,22 @@ function game() {
 
     board.on("ready", function() {
 
+        console.log('Press "s" to start');
+
         // Set up lanes
 
         var lanes = [
             {
                 'name' : 'topLane',
                 'lane' : new Lane('A0',1.02,500,10,'i',3),
-                'differenceToFrontSensorRequiredForGameToStart' : 1.05
             },
             {
                 'name' : 'middleLane',
                 'lane' : new Lane('A1',1.02,500,9,'o',4),
-                'differenceToFrontSensorRequiredForGameToStart' : 1.05
             },
             {
                 'name' : 'bottomLane',
                 'lane' : new Lane('A2',1.02,500,8,'p',5),
-                'differenceToFrontSensorRequiredForGameToStart' : 0.90
             }
         ];
 
@@ -82,28 +80,6 @@ function game() {
                         currentLane.decideWhetherToFireSolenoid();
                     }
                 }
-
-            // Check if game running 
-
-
-            var testValues = [
-                lanes[0].lane.sensor.mediumAverage() * lanes[0].differenceToFrontSensorRequiredForGameToStart,
-                lanes[1].lane.sensor.mediumAverage() * lanes[1].differenceToFrontSensorRequiredForGameToStart,
-                lanes[2].lane.sensor.mediumAverage() * lanes[2].differenceToFrontSensorRequiredForGameToStart
-            ]
-
-
-
-            // if (gameSensorValue > testValues[0] && gameSensorValue > testValues[1] && testValues[2])
-            // {
-            //     gameRunning = true;
-            // }
-
-            // else {
-            //     gameRunning = false;
-            //     console.log(gameSensorValue, testValues[0], testValues[1],testValues[2]);
-
-            // }
 
         }, GAME_INTERVAL);
 
@@ -186,6 +162,17 @@ function keyboard() {
       // Exit if ctrl-c
         if ( key === '\u0003' ) {
             process.exit();
+        }
+
+        if ( key === 's') {
+            gameRunning = !gameRunning;
+
+            if(gameRunning) {
+                console.log('\n Game started...');
+            }
+            else {
+                console.log('\n Game stopped...');
+            }
         }
 
         lastKeyPress = new keyPress(key, currentTime());
