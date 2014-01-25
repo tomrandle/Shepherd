@@ -13,6 +13,7 @@ var SOLENOID_PRESS_TIME = 300;
 /* Global Variables */ 
 
 var keyPresses = [];
+var gameRunning = true;
 
 /*Objects*/
 
@@ -30,24 +31,75 @@ function game() {
 
         // Set up lanes
 
-        var topLane = new Lane('A0',1.05,1,10,'i');
-        var middleLane = new Lane('A1',1.05,1,9,'o');
-        var bottomLane = new Lane('A2',1.05,1,8,'p');
+        var lanes = [
+            {
+                'name' : 'topLane',
+                'lane' : new Lane('A0',1.05,1400,10,'i'),
+                'differenceToFrontSensorRequiredForGameToStart' : 1.3
+            },
+            {
+                'name' : 'middleLane',
+                'lane' : new Lane('A1',1.05,1400,9,'o'),
+                'differenceToFrontSensorRequiredForGameToStart' : 1.3
+            },
+            {
+                'name' : 'bottomLane',
+                'lane' : new Lane('A2',1.05,1400,8,'p'),
+                'differenceToFrontSensorRequiredForGameToStart' : 0.9
+            }
+        ];
 
         // Set up extra sensor
+
+        var gameOnSensor = new Sensor('A3', 1.05);
 
         // Interval loop
 
         setInterval(function(){
 
-            // Do all the checks
+            // Read front sensor
 
-            topLane.sensor.takeReading();
-            topLane.updateSheep();
+            gameOnSensor.takeReading();
+            var gameSensorValue = gameOnSensor.mediumAverage();
 
-            topLane.decideWhetherToFireSolenoid();
+            // For each lane
 
-         }, GAME_INTERVAL);
+                for (var i = 0; i < lanes.length; i++) {
+                    var currentLane = lanes[i].lane;
+                    
+                    // Take readings
+
+                    currentLane.sensor.takeReading();
+
+                    // Do checks if the game is running
+
+                    if (gameRunning) {
+                        currentLane.updateSheep();
+                        currentLane.decideWhetherToFireSolenoid();
+                    }
+                }
+
+            // Check if game running 
+
+
+            var testValues = [
+                lanes[0].lane.sensor.mediumAverage() * lanes[0].differenceToFrontSensorRequiredForGameToStart,
+                lanes[1].lane.sensor.mediumAverage() * lanes[1].differenceToFrontSensorRequiredForGameToStart,
+                lanes[2].lane.sensor.mediumAverage() * lanes[2].differenceToFrontSensorRequiredForGameToStart
+            ]
+
+            if (gameSensorValue > testValues[0] && gameSensorValue > testValues[1] && testValues[2])
+            {
+                gameRunning = true;
+            }
+
+            else {
+                gameRunning = false;
+                console.log('Game not running');
+
+            }
+
+        }, GAME_INTERVAL);
 
     });
 }
