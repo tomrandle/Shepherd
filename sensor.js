@@ -56,7 +56,6 @@ var Sensor =  function (pin, threshold) {
 
     this.isTriggered = function () {
         if (this.ratioOfAverages() > this.threshold) {
-            console.log('Triggered')
             return true;
         }
         else {
