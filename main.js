@@ -52,7 +52,7 @@ function game() {
             },
             {
                 'name' : 'middleLane',
-                'lane' : new Lane('A1',1.02,100,9,'o',4),
+                'lane' : new Lane('A1',1.02,80,9,'o',4),
             },
             {
                 'name' : 'bottomLane',
