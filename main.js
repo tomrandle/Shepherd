@@ -3,14 +3,15 @@
 /* Includes */
 
 var five = require("johnny-five");
+var fs = require('fs');
+
 var Sensor = require('./sensor.js');
 var Solenoid = require('./solenoid.js');
 var Led = require('./Led.js');
 
-
 /* Constants */ 
 
-var GAME_INTERVAL = 100;
+var GAME_INTERVAL = 50;
 var SOLENOID_PRESS_TIME = 300;
 
 /* Global Variables */ 
@@ -18,9 +19,17 @@ var SOLENOID_PRESS_TIME = 300;
 var keyPresses = [];
 var gameRunning = false;
 
+var jsonLogData = [];
+var csvLogData = 'time, topLDR, middleLDR, bottomLDR, topSolenoid, middleSolenoid, bottomSolenoid';
+
+var jsonFilePath = "log/log.json";
+var csvFilePath = "log/log.csv";
+
+
 /*Objects*/
 
 function game() {
+
 
     // Check keyboard
 
@@ -39,30 +48,21 @@ function game() {
         var lanes = [
             {
                 'name' : 'topLane',
-                'lane' : new Lane('A0',1.02,500,10,'i',3),
+                'lane' : new Lane('A0',1.01,200,10,'i',3),
             },
             {
                 'name' : 'middleLane',
-                'lane' : new Lane('A1',1.02,500,9,'o',4),
+                'lane' : new Lane('A1',1.02,100,9,'o',4),
             },
             {
                 'name' : 'bottomLane',
-                'lane' : new Lane('A2',1.02,500,8,'p',5),
+                'lane' : new Lane('A2',1.02,80,8,'p',5),
             }
         ];
-
-        // Set up extra sensor
-
-        var gameOnSensor = new Sensor('A3', 1.05);
 
         // Interval loop
 
         setInterval(function(){
-
-            // Read front sensor
-
-            gameOnSensor.takeReading();
-            var gameSensorValue = gameOnSensor.mediumAverage();
 
             // For each lane
 
@@ -78,6 +78,41 @@ function game() {
                     if (gameRunning) {
                         currentLane.updateSheep();
                         currentLane.decideWhetherToFireSolenoid();
+
+                        // Update log
+
+                        var topReadings = lanes[0].lane.sensor.readings;
+                        var middleReadings = lanes[1].lane.sensor.readings;
+                        var bottomReadings = lanes[2].lane.sensor.readings;
+
+                        var topReading = topReadings[topReadings.length-1].value;
+                        var middleReading = middleReadings[middleReadings.length-1].value;
+                        var bottomReading = bottomReadings[bottomReadings.length-1].value;
+
+                        var topSolenoid = lanes[0].lane.solenoid.currentlyFiring;
+                        var middleSolenoid = lanes[1].lane.solenoid.currentlyFiring;
+                        var bottomSolenoid = lanes[2].lane.solenoid.currentlyFiring;
+
+                        // JSON 
+
+                        var jsonLogEntry = {
+                            'time': currentTime(),
+                            'topLDR': topReading,
+                            'middleLDR' : middleReading ,
+                            'bottomLDR' : bottomReading,
+                            'topSolenoid' : topSolenoid,
+                            'middleSolenoid' : middleSolenoid,
+                            'bottomSolenoid' : bottomSolenoid
+                        };
+
+                        jsonLogData.push(jsonLogEntry);
+
+                        // CSV
+
+                        var csvRow = '\n' + currentTime() + ',' + topReading + ',' + middleReading + ',' + bottomReading + ',' + topSolenoid + ',' + middleSolenoid + ',' + bottomSolenoid;
+
+                        csvLogData = csvLogData + csvRow;
+                        fs.writeFile(csvFilePath, csvLogData);
                     }
                 }
 
@@ -168,10 +203,10 @@ function keyboard() {
             gameRunning = !gameRunning;
 
             if(gameRunning) {
-                console.log('\n Game started...');
+                console.log('Game started...');
             }
             else {
-                console.log('\n Game stopped...');
+                console.log('Game stopped...');
             }
         }
 
@@ -180,6 +215,9 @@ function keyboard() {
 
     });
 }
+
+
+
 
 function currentTime() {
     var date = new Date();
@@ -201,6 +239,7 @@ var Sheep = function(timeSpotted) {
     this.timeSpotted = timeSpotted;
     this.timePassed = '';
 }
+
 
 
 
