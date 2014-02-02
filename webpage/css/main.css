@@ -1,7 +1,7 @@
 body {
   font-family: 'Oxygen', sans-serif;
   font-weight: 300;
-  color: #112233;
+  color: #4e5153;
   font-size: 16px; }
 
 .wrapper {
@@ -9,9 +9,7 @@ body {
   margin: 0 auto;
   padding: 32px 0; }
 
-.logo {
-  width: 160px; }
-
+/* Headings */
 header {
   text-align: center; }
 
@@ -19,16 +17,19 @@ h1, h2, h3, h4, h5, h6 {
   color: #223344; }
 
 h1, h2 {
-  margin: 48px 0 16px 0; }
+  margin: 32px 0 16px 0;
+  line-height: 32px; }
 
 h4 {
-  margin-bottom: 12px; }
+  margin-bottom: 16px; }
 
+/* Typography */
 p {
   line-height: 32px;
   margin-top: 0;
   margin-bottom: 24px; }
 
+/* Images and Video */
 img {
   max-width: 100%; }
 
@@ -38,14 +39,15 @@ table {
     border: 1px solid;
     padding: 8px; }
 
+figure {
+  margin-bottom: 24px; }
+  figure iframe {
+    width: 800px;
+    height: 450px; }
+
+/* Bill of materials */
 .bill-of-materials {
   width: 60%; }
 
 .number-column {
   text-align: right; }
-
-figure {
-  margin-bottom: 28px; }
-  figure iframe {
-    width: 800px;
-    height: 450px; }

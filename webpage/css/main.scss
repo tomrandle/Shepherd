@@ -1,6 +1,7 @@
 $base : 16px;
-$bodyColour : #123;
+$bodyColour : #4E5153;
 $headingColour : #234;
+
 
 body {
     font-family: 'Oxygen', sans-serif; 
@@ -15,31 +16,35 @@ body {
     padding:$base * 2 0;
 }
 
-.logo {
-    width:160px;
-}
+
+/* Headings */
 
 header {
     text-align: center;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color:$headingColour;
+    color: $headingColour;
 }
 
-h1,h2 {
-    margin:48px 0 16px 0;
+h1,h2 { 
+    margin: $base * 2 0 $base 0;
+    line-height: $base * 2;
 }
 
 h4 {
-    margin-bottom: 12px;
+    margin-bottom: $base;
 }
+
+/* Typography */
+
 p {
     line-height: $base * 2;
     margin-top:0;
     margin-bottom: $base * 1.5;
-  
 }
+
+/* Images and Video */
 
 img {
     max-width: 100%;
@@ -47,11 +52,23 @@ img {
 
 table {
     text-align: left;
+
     th, td {
         border:1px solid;
-        padding:8px;
+        padding: $base / 2;
     }
 }
+
+figure {
+    margin-bottom: $base * 1.5;
+    iframe {
+        width:800px;
+        height: 450px;
+    }
+}
+
+
+/* Bill of materials */
 
 .bill-of-materials {
     width:60%;
@@ -61,11 +78,3 @@ table {
     text-align: right;
 }
 
-figure {
-    margin-bottom: 28px;
-
-    iframe {
-        width:800px;
-        height: 450px;
-    }
-}
