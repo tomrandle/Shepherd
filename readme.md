@@ -1,4 +1,4 @@
-shepherd2 - Work in Progress
+Shepherd - Work in Progress
 ============================
 
 Arduino / Johnny Five Robot.
