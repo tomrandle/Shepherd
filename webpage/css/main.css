@@ -51,9 +51,13 @@ table th, table td {
     text-align: right;
 }
 
+figure {
+    margin-bottom: 18px;
+}
+
 figure iframe {
     width:800px;
-    height: 600px;
+    height: 450px;
 }
 
 iframe {width:100%;}
