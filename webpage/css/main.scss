@@ -34,10 +34,11 @@ h4 {
     margin-bottom: 12px;
 }
 p {
-    line-height: 26px;
+    line-height: $base * 2;
+    font-size: $base;
     margin-top:0;
-    margin-bottom: 26px;
-    font-size: $base * 2;
+    margin-bottom: $base * 1.5;
+  
 }
 
 img {
