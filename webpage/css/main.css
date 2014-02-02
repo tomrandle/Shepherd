@@ -29,6 +29,9 @@ p {
   margin-top: 0;
   margin-bottom: 24px; }
 
+a {
+  color: #98d488; }
+
 /* Images and Video */
 img {
   max-width: 100%; }

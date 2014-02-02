@@ -1,6 +1,7 @@
 $base : 16px;
 $bodyColour : #4E5153;
 $headingColour : #234;
+$linkColour: #98D488;
 
 
 body {
@@ -44,6 +45,9 @@ p {
     margin-bottom: $base * 1.5;
 }
 
+a {
+    color:$linkColour;
+}
 /* Images and Video */
 
 img {
