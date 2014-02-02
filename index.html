@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="webpage/css/normalize.min.css">
+        <link rel="stylesheet" href="webpage/css/main.css">
+
+        <link href='http://fonts.googleapis.com/css?family=Kite+One' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
+
+        <link href='http://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
+        
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="wrapper">
+            <header>
+                <img class="logo" src="img/shepherd-logo-monochrome.svg">
+                <h1>Shepherd</h1>  
+                <p>The leap sheep cheating machine.</p>
+            </header>
+                
+            <h2>How it works</h2>
+    
+            <p>A light sensor measures the brightness of each lane. The Arduino / computer store these values and use them to work out if there's a sheep currently under the sensor. It then predicts when the sheep will arrive and fires the solenoid to tap them over the fence!</p> 
+    
+            <figure>
+                <img src="img/game-diagram.svg">
+            </figure>
+
+
+            <h2>Background</h2>
+
+            <p>On a complete whim about 2 years ago I decided to make a robot that autonomously played one of my favourite iPhone games: <a href="http://www.turtlerockgarage.com/leapsheep/">Leap Sheep</a>. The game mechanics are nice and simple so it lends itself really well to automation. Sheep run from left to right, and to play all you need to do is tap them before they crash into the fence. There's no swiping and the touch points are fixed.</p>
+
+            Insert image of V1
+
+            <p>Working on the project on and off, i’ve now built the robot three times! The first attempt was designed to play an iPhone and was programmed in C. It worked, just about, but the code got a bit out of hand and struggled to fit everything in. About a year later I decided to pick the project up again and rebuilt it entirely to play an iPad instead. This time I decided to tether the Arduino to my computer so I could program in Python. It was an improvement but wedding plans took over and I never finished it. This year I decided to pick it up again and rewrite the code from scratch a second time using Javascript and Node. </p>
+
+            <p class="aside">Note: If I was an artist, or social commentator there's probably something deeply philosophical I could say about a device to play a game for you so you don’t have to, but I'm not. I'm just an engineer (sort of) who wanted to build a robot!</p>
+
+            <h2>The Build</h2>
+
+            <h3>Research</h3>
+
+            <p>Before doing anything else I needed to check it was possible to detect sheep and trigger the screen.</p>
+            
+            <h4>How to detect sheep?</h4>
+
+            <p>My hunch was that a simple light dependent resistor (LDR) would be able to detect changes in brightnesses in the game. To check I strapped an LDR to the screen and measured the resistance. To my delight it worked first time.</p>
+
+            <figure>
+                <iframe src="//player.vimeo.com/video/48246386?title=0&amp;byline=0&amp;portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
+            </figure>
+
+            <figure>
+            <iframe src="//player.vimeo.com/video/85657331?title=0&amp;byline=0&amp;portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </figure>
+
+            <h4>How to trigger the screen?</h4>
+
+            <p>Triggering the screen split into two problems 1) How to simulate a finger 2) How to move the ‘finger’ up and down.</p>
+            <p>I’d read a weird article about how some Koreans were using sausages as styluses in the winter because touch screens wouldn’t work through gloves so thought simulating touch might be a problem.</p>
+
+            <p>To check I held a stylus with some insulated pliers and found it didn’t work.</p>
+
+            <p>I then conducted some very strange experiments involving carrots before asking a question on the Electrical Engineering Stack Exchange and discovering that all you needed to do was ground the stylus!</p>
+
+            <p>For actuating the stylus my initial thought was to use servos. I'd used them before and they're relatively inexpensive. However translating the motion to linear and getting the timing and speed required proved to be more or less impossible. </p>
+
+            <p>I therefore decided to buy some solenoids off eBay. They worked perfectly and, although they required a bit more circuitry, they also had the added benefit that they could be connected to the styluses directly.</p>
+
+            <h3>The Chassis</h3>
+
+            <p>I’d originally planned to build the chassis to hold the electronics and actuators completely from scratch, but I then discovered Makerbeam.</p>
+
+            <p>The first version of the robot only used the beams for the vertical supports, but I built the second and third iPad versions entirely using Makerbeam.</p>
+
+            <p>The structure was designed to allow the LDRs and solenoids to be repositioned easily and for the whole robot to be lifted on and off the iPad to make it less of a hassle to operate the iPad.</p>
+
+            <h3>The Electronics</h3>
+
+            <p>At first I mocked up the electronics on a breadboard before moving to stripboard.</p>
+
+            <figure>
+                <img src="img/circuit-example.svg">
+                <figcaption>
+                </figaption>
+            </figure>
+
+            <p>For the LDRs I just had to set up 3 simple potential divider circuits and connect them to the Arduino’s analog inputs.</p>
+
+            <p>For the solenoids I found a circuit on <a href="">bildr.org</a> (an excellent resource for learning how to use different sensors and componets with the Arduino). Solenoids require more current than the Arduino can provide so they need an external power source. Transistors allow the low power Arduino output to switch the high power supply on and off. A diode protects circuit from the back EMF caused by the solenoids discharging.</p>
+
+            <p>In my final build I also added some LEDs to show when sheep were detected.</p>
+
+            <p>I did briefly consider modifying the design slightly to use two LDRs for each lane connected together in a Wheatstone bridge, to make it easier to detect sheep and work out their speeds, but in the end it proved unnecessary.</p>
+
+            <h3>The Code </h3>
+
+            <p>After getting in over my head with programming directly on the Arduino with C, I decided to tether the Arduino to a computer and rewrite the application in Python. I installed  Firmata on the board and then used the pyFirmata library to control it.</p>
+
+            <p>When I came back to it this year, as I’ve been trying to improve my Javascript skills I decided rewrite the application using the Johnny-Five framework.</p>
+
+            <p>Following some advice from a developer buddy I decided to program the code in a basic loop. Every 50ms the application loops through each lane, reading the sensor values, deciding if any sheep have arrived, and working out whether the solenoid should be up or down.</p>
+
+            <p>The hardest part was accurately detecting the sheep. I found comparing a short rolling average to a longer one worked fairly well, although I’m sure I could have done something more intelligent. I couldn’t just use a static value as the ambient lighting changed too much and the game actually varies depending on the time of day!</p>
+
+            <p>By placing the LDRs as close as possible to the solenoids I could neglect variations in sheep speed and size (although I may revisit this if I build the robot again!). The most frustrating part of the process was testing the detection and solenoid timings. Exporting a log helped, especially with the sheep detection, but to get the timings right I had to run the game many, many times!</p>
+
+            <p>I tried a adding a 4th sensor to help work out when the was running, but this proved more trouble than it was worth and in the end I just added a keyboard input.</p>
+
+            <h3>Bill of Materials</h3>
+
+            <table class="bill-of-materials">
+                <tr>
+                    <th>Item</th>
+                    <th>Qty.</th>
+                </tr>
+                <tr>
+                    <td>Arduino Uno</td>
+                    <td class="number-column">1</td>
+                </tr>
+                <tr>
+                    <td>Light Dependent Resistor (LDR)</td>
+                    <td class="number-column">3</td>
+                </tr>
+                <tr>
+                    <td>Light Dependent Resistor (LDR)</td>
+                    <td class="number-column">3</td>
+                </tr>
+                 <tr>
+                    <td>Resistor (for LDR)</td>
+                    <td class="number-column">3</td>
+                </tr>
+                <tr>
+                    <td>Transistors</td>
+                    <td class="number-column">3</td>
+                </tr>
+                <tr>
+                    <td>Resistor (for transistor)</td>
+                    <td class="number-column">3</td>
+                </tr>
+               <tr>
+                    <td>Solenoids</td>
+                    <td class="number-column">3</td>
+                </tr>
+                 <tr>
+                    <td>Diodes (for solenoids)</td>
+                    <td class="number-column">3</td>
+                </tr>
+                <tr>
+                    <td>LEDs</td>
+                    <td class="number-column">3</td>
+                </tr>
+                <tr>
+                    <td>Resistor (for LEDs)</td>
+                    <td class="number-column">3</td>
+                </tr>
+            
+            <p>Maker beam, Computer, USB, Styluses, Plastic tube, Cable ties, Crimp pins,</p>
+
+
+
+
+
+
+            </table>
+
+            <h3>Next steps</h3>
+
+            <p>My original aim was to build a robot that was better at playing the game than a human.</p>At the moment it’s not quite there.
+
+            <p>The longest I’ve had it running continuously so far is X minutes: Y sheep. It occasionally just misses a sheep, but with a bit more tweaking I can probably cut this significantly.</p>
+
+            <p>To get a decent score though I need to add a second row of solenoids to tap the sheep when they’re in the air for the trick multiplier.</p>
+             
+            <p>Hopefully this has inspired you to build something crazy, maybe even your own Leap Sheep cheating machine! I’d love to see other people’s approaches.</p>
+        </div>
+
+        <script src="js/main.js">   </script>
+    </body>
+</html>
