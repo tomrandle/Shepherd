@@ -3,6 +3,8 @@ Shepherd - Work in Progress
 
 Arduino / Johnny Five Robot.
 
+https://tomrandle.github.io/tomrandle/Shepherd
+
 
 ## Circuit
 
