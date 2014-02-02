@@ -1,0 +1,1201 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"he",
+				"header	Tag"
+			],
+			[
+				"csv",
+				"csvRow"
+			],
+			[
+				"bo",
+				"bottomReadings"
+			],
+			[
+				"m",
+				"middleReading"
+			],
+			[
+				"va",
+				"var"
+			],
+			[
+				"top",
+				"topReading"
+			],
+			[
+				"cu",
+				"currentTime"
+			],
+			[
+				"cs",
+				"csvRow"
+			],
+			[
+				"mo",
+				"middleSolenoid"
+			],
+			[
+				"b",
+				"bottomLDR"
+			],
+			[
+				"jsonLo",
+				"jsonLogEntry"
+			],
+			[
+				"jso",
+				"jsonLogData"
+			],
+			[
+				"file",
+				"fileJsonPath"
+			],
+			[
+				"curr",
+				"currentlyFiring"
+			],
+			[
+				"to",
+				"topSolenoid"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"log",
+				"logEntry"
+			],
+			[
+				"lo",
+				"logEntry"
+			],
+			[
+				"gam",
+				"gameRunning"
+			],
+			[
+				"led",
+				"ledPin"
+			],
+			[
+				"ga",
+				"gameSensorValue"
+			],
+			[
+				"game",
+				"gameRunning"
+			],
+			[
+				"gm",
+				"gameRunning"
+			],
+			[
+				"sens",
+				"sensor"
+			],
+			[
+				"sole",
+				"SOLENOID_PRESS_TIME"
+			],
+			[
+				"time",
+				"timeSpotted"
+			],
+			[
+				"fir",
+				"fireSolenoid"
+			],
+			[
+				"sen",
+				"sensorDelay"
+			],
+			[
+				"TIM",
+				"SOLENOID_PRESS_TIME"
+			],
+			[
+				"tim",
+				"timeSpotted"
+			],
+			[
+				"new",
+				"newSheep"
+			],
+			[
+				"she",
+				"sheepQueue"
+			],
+			[
+				"get",
+				"getTime"
+			],
+			[
+				"ge",
+				"getTime"
+			],
+			[
+				"key",
+				"keyboard"
+			],
+			[
+				"so",
+				"solenoid"
+			],
+			[
+				"ti",
+				"SOLENOID_PRESS_TIME"
+			],
+			[
+				"sol",
+				"solenoidKey"
+			],
+			[
+				"fire",
+				"decideWhetherToFireSolenoid"
+			],
+			[
+				"Sole",
+				"Solenoid"
+			],
+			[
+				"up",
+				"updateSheep"
+			],
+			[
+				"al",
+				"alreadyActive"
+			],
+			[
+				"ac",
+				"activeSensor"
+			],
+			[
+				"se",
+				"sensor"
+			],
+			[
+				"te",
+				"testArray"
+			],
+			[
+				"r",
+				"ratioOfAverages"
+			],
+			[
+				"Ga",
+				"GAME_INTERVAL"
+			],
+			[
+				"sn",
+				"sensorReading"
+			],
+			[
+				"upd",
+				"updateAndReturnRatio"
+			],
+			[
+				"c",
+				"calculateRollingAverage"
+			],
+			[
+				"su",
+				"subArray"
+			],
+			[
+				"fu",
+				"fullReading"
+			],
+			[
+				"re",
+				"readings"
+			],
+			[
+				"check",
+				"checkForSheep"
+			],
+			[
+				"pro",
+				"processedReadings"
+			],
+			[
+				"me",
+				"mediumReadings"
+			],
+			[
+				"pr",
+				"processedReadings"
+			],
+			[
+				"sh",
+				"shortAverage"
+			],
+			[
+				"medi",
+				"mediumReadings"
+			],
+			[
+				"shor",
+				"shortReadings"
+			],
+			[
+				"short",
+				"shortAverage"
+			],
+			[
+				"che",
+				"checkForSheep"
+			],
+			[
+				"a",
+				"average"
+			],
+			[
+				"val",
+				"value"
+			],
+			[
+				"arr",
+				"array"
+			],
+			[
+				"la",
+				"latestReading"
+			],
+			[
+				"tr",
+				"triggerThreshold"
+			],
+			[
+				"t",
+				"triggerThreshold"
+			],
+			[
+				"l",
+				"mediumLength"
+			],
+			[
+				"ke",
+				"keyPresses"
+			],
+			[
+				"C",
+				"currentGameTime"
+			],
+			[
+				"k",
+				"key"
+			],
+			[
+				"cur",
+				"currentGameTime"
+			],
+			[
+				"las",
+				"lastKeyPress"
+			],
+			[
+				"ex",
+				"expectedArrivalTime"
+			],
+			[
+				"mi",
+				"middleLDR"
+			],
+			[
+				"fot",
+				"frontLDR"
+			],
+			[
+				"fo",
+				"frontLDR"
+			],
+			[
+				"mid",
+				"middleLDR"
+			],
+			[
+				"s",
+				"solenoid"
+			],
+			[
+				"rea",
+				"readPin"
+			],
+			[
+				"uo",
+				"updateLog"
+			],
+			[
+				"Bot",
+				"BottomSolenoid"
+			],
+			[
+				"Mi",
+				"MiddleSolenoid"
+			],
+			[
+				"Top",
+				"TopSolenoid"
+			],
+			[
+				"front",
+				"FrontLDR"
+			],
+			[
+				"for",
+				"formattedResults"
+			],
+			[
+				"five",
+				"fivePin"
+			],
+			[
+				"fiv",
+				"fivePin"
+			],
+			[
+				"fi",
+				"fivePin"
+			],
+			[
+				"qu",
+				"queueKeyPresses"
+			],
+			[
+				"un",
+				"unactionedKeypress"
+			],
+			[
+				"read",
+				"reading2"
+			],
+			[
+				"solenoid",
+				"solenoidStates"
+			],
+			[
+				"w",
+				"writeReadingsToFile"
+			],
+			[
+				"ldr",
+				"ldrPin"
+			],
+			[
+				"lr",
+				"ldrPins"
+			],
+			[
+				"ld",
+				"ldrSensors"
+			],
+			[
+				"p",
+				"photoresistor"
+			],
+			[
+				"bot",
+				"bottomSolenoidDown"
+			],
+			[
+				"f",
+				"firing"
+			],
+			[
+				"end",
+				"encodedMessage"
+			],
+			[
+				"enco",
+				"encodedMessage"
+			],
+			[
+				"do",
+				"dotLength"
+			],
+			[
+				"mor",
+				"morseCharacterPause"
+			],
+			[
+				"flas",
+				"flashSequence"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"ans",
+				"answerString"
+			],
+			[
+				"font-",
+				"font-size"
+			],
+			[
+				"hea",
+				"headingColor"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"bod",
+				"bodyColor"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"bas",
+				"baseText"
+			],
+			[
+				"mar",
+				"margin-right"
+			],
+			[
+				"ba",
+				"baselineHeight"
+			],
+			[
+				"bae",
+				"baseText"
+			],
+			[
+				"ma",
+				"margin-bottom"
+			],
+			[
+				"line",
+				"lineHeight"
+			],
+			[
+				"pla",
+				"playersBullet"
+			],
+			[
+				"bulle",
+				"bullet"
+			],
+			[
+				"plane",
+				"planeHeight"
+			],
+			[
+				"angleOf",
+				"angleOfAttack"
+			],
+			[
+				"angleO",
+				"angleOfAttack"
+			],
+			[
+				"sour",
+				"sourceX"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "main.js",
+			"settings":
+			{
+				"buffer_size": 6720,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "// // Logs the inputted data to file in JSON and CSV formats\n\n// // Includes\n\n// var fs = require('fs');\n\n\n// // Global variables\n\n// var log = function() {\n\n//     updateLog = function() {\n//         console.log('baaaah');\n//     };\n\n// }\n\n// // var filePath = \"log/log.json\";\n// // var writeLog = function (newData) {\n\n// //     var logData;\n// //     // fs.writeFile(filePath, JSON.stringify(logData));\n\n// // }\n\n// // // read file \n\n// // // write file\n\n// // // var data = require('./log/log-1390162215609.json');\n\n\n// // var allData = [];\n\n\n\n// // // Export module\n\n// // module.exports = log;",
+			"file": "logData.js",
+			"file_size": 539,
+			"file_write_time": 1390690246000000,
+			"settings":
+			{
+				"buffer_size": 599,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "solenoid.js",
+			"settings":
+			{
+				"buffer_size": 457,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "webpage/css/main.css",
+			"settings":
+			{
+				"buffer_size": 3778,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "webpage/index.html",
+			"settings":
+			{
+				"buffer_size": 4302,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "webpage/text.html",
+			"settings":
+			{
+				"buffer_size": 7340,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/User/node.sublime-build",
+	"command_palette":
+	{
+		"height": 400.0,
+		"selected_items":
+		[
+			[
+				"",
+				"JSHint"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: i",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 475.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/tom/Dropbox/Code/Node/shepherd/webpage/index.html",
+		"/Users/tom/Dropbox/Code/Node/shepherd/sensor.js",
+		"/Users/tom/Dropbox/Code/Node/shepherd/led.js",
+		"/Users/tom/Dropbox/Code/Node/shepherd/old/logData.js",
+		"/Users/tom/Dropbox/Code/Node/shepherd/old/old-checkdata.js",
+		"/Users/tom/Dropbox/Code/Node/shepherd/old/old.js",
+		"/Users/tom/Dropbox/Code/Node/shepherd/main.js",
+		"/Users/tom/Dropbox/Code/Node/shepherd/tests/newObjectsSpec.js",
+		"/Users/tom/Dropbox/Code/Node/shepherd/newObjects.js",
+		"/Users/tom/Dropbox/Code/Node/shepherd/lane.js",
+		"/Users/tom/Dropbox/Code/Node/shepherd/keyboard.js",
+		"/Users/tom/Dropbox/Code/Node/shepherd/solenoid.js",
+		"/Users/tom/Dropbox/Code/Node/node_modules/johnny-five/lib/board.js",
+		"/Users/tom/Dropbox/Code/Node/shepherd/slice-test.js",
+		"/Users/tom/Library/Application Support/Sublime Text 2/Packages/User/node.sublime-build",
+		"/Users/tom/Dropbox/Code/Node/shepherd/shepherd.sublime-build",
+		"/Users/tom/Dropbox/Code/Node/shepherd/simulate.js",
+		"/Users/tom/Dropbox/Code/Node/shepherd/checkData.js",
+		"/Users/tom/Dropbox/Code/Node/shepherd/jasmine/SpecRunner.html",
+		"/Users/tom/Dropbox/Code/Node/shepherd/shepherd.sublime-project",
+		"/Users/tom/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/tom/Dropbox/Code/Node/shephered/main.js",
+		"/Users/tom/Dropbox/Code/Node/shephered/simulate.js",
+		"/Users/tom/Dropbox/Code/Node/shephered/checkData.js",
+		"/Users/tom/Dropbox/Code/Node/shephered/import.js",
+		"/Users/tom/Dropbox/Code/Node/shephered/simplest-module-ever-test.js",
+		"/Users/tom/Dropbox/Code/Node/shephered/simplest-module-ever.js",
+		"/Users/tom/Dropbox/Code/Node/shephered/test.js",
+		"/Users/tom/Dropbox/Code/Node/firmata/keyboardInput.js",
+		"/Users/tom/Dropbox/Code/Node/firmata/objecttest.js",
+		"/Users/tom/Dropbox/Code/Node/firmata/createfiletest.js",
+		"/Users/tom/Dropbox/Code/Python/shepherd2/shepherd2.py",
+		"/Users/tom/Dropbox/Code/Python/shepherd2/read2.py",
+		"/Users/tom/Dropbox/Projects/foxdxf.dxf",
+		"/Users/tom/Dropbox/Code/browser-extension/manifest.json",
+		"/Users/tom/Dropbox/Code/browser-extension/popup.js",
+		"/Users/tom/Dropbox/Code/times-tables/README.md",
+		"/Users/tom/Dropbox/Code/morse/index.html",
+		"/Users/tom/Dropbox/Code/browser-extension/popup.html",
+		"/Users/tom/Dropbox/Code/times-tables/css/style.css",
+		"/Users/tom/Dropbox/Code/times-tables/js/main.js",
+		"/Users/tom/Dropbox/Code/times-tables/index.html",
+		"/Users/tom/Downloads/animate-custom (1).css",
+		"/Users/tom/Dropbox/Sites/makeittwice.com/_posts/2013-08-31-first-post.markdown",
+		"/Users/tom/Dropbox/Sites/makeittwice.com/_layouts/post.html",
+		"/Users/tom/Dropbox/Sites/makeittwice.com/index.html",
+		"/Users/tom/Dropbox/Sites/makeittwice.com/_config.yml",
+		"/Users/tom/Dropbox/Sites/makeittwice.com/_layouts/default.html",
+		"/Users/tom/Dropbox/Sites/makeittwice.com/_scss/style.scss",
+		"/Users/tom/Dropbox/Sites/makeittwice.com/_site/index.html",
+		"/Users/tom/Downloads/animate-custom (2).css",
+		"/Users/tom/Desktop/xivelytomrandle.txt",
+		"/Users/tom/Dropbox/Sites/makeittwice.com/_posts/first-post.markdown",
+		"/Users/tom/Dropbox/Sites/makeittwice.com/css/style.css",
+		"/Users/tom/Dropbox/Sites/tomrandle-new/design/style.scss",
+		"/Users/tom/Dropbox/Sites/tomrandle-new/design/design.html",
+		"/Users/tom/Dropbox/Sites/tomrandle-new/design/normalize.css",
+		"/Users/tom/Dropbox/Sites/makeittwice.com/css/main.css",
+		"/Users/tom/Dropbox/Sites/makeittwice.com/css/syntax.css",
+		"/Users/tom/Dropbox/Sites/untitled.sublime-project",
+		"/Users/tom/Dropbox/Code/Carnage-Remake/collisionTest.js",
+		"/Users/tom/Dropbox/Code/Carnage-Remake/index.html",
+		"/Users/tom/Dropbox/Sites/tomrandle-new/design/design",
+		"/Users/tom/Dropbox/Code/Carnage-Remake/collisions.js",
+		"/Users/tom/Dropbox/Code/Carnage-Remake/libraries/sat/SAT.js",
+		"/Users/tom/Dropbox/Code/Carnage-Remake/keycodes.js",
+		"/Users/tom/Dropbox/Code/Carnage-Remake/style.css",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/archive.html",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/js/main.js",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/css/custom.css",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_site/posts/conkers.html",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2013-03-03-walk-in-the-woods.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_layouts/default.html",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/css/comments.css",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_includes/head.html",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_site/feed.xml",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/feed.xml",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2013-03-04-test.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_layouts/post.html",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2010-08-30-the-harvest.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2013-03-12-timber-stacks.md",
+		"/Users/tom/Dropbox/Code/robot-interface/index.html",
+		"/Users/tom/Dropbox/Code/robot-interface/style.css",
+		"/Users/tom/Dropbox/Code/Carnage-Remake/keyStatus.js",
+		"/Users/tom/Dropbox/Code/Carnage-Remake/jquery.hotkeys.js",
+		"/Users/tom/Dropbox/Code/robot-interface/movie.js",
+		"/Users/tom/Dropbox/Code/robot-interface/lib/moustrap/mousetrap.js",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_site/posts/walk-in-the-woods.html",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_includes/foot.html",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/js/plugins.js",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2013-02-27-international-polar-bear-day.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2012-12-21-camping2.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2013-02-26-campfire.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2011-06-05-raincoats.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2012-12-21-desert.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2012-12-21-winter-is-coming.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2012-12-21-arctic-beans.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2012-12-21-winter.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2012-12-21-zulu.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_includes/main-nav",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2012-04-30-royal.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2012-12-21-spitfire.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2012-12-21-conkers.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2012-12-21-campfire.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2012-12-21-arctic.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/about.html",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_config.yml",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/apple-touch-icon-144x144-precomposed.png",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_layouts/_config.yml",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_layouts/blank.html",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2012-12-21-burgers.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_posts/2009-09-11-conkers.md",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new/_includes/main-nav.html",
+		"/Users/tom/Dropbox/Sites/blog.tomrandle.com/content/3d-printer.rst",
+		"/Users/tom/Dropbox/Sites/portfolio.tomrandle.com/theme/custom/static/css/style.css",
+		"/Users/tom/Dropbox/Sites/portfolio.tomrandle.com/theme/custom/templates/base.html",
+		"/Users/tom/Dropbox/Sites/portfolio.tomrandle.com/pelicanconf.py",
+		"/Users/tom/Dropbox/Sites/portfolio.tomrandle.com/content/a.rst",
+		"/Users/tom/Dropbox/Sites/portfolio.tomrandle.com/content/sql-backup.rst",
+		"/Users/tom/Dropbox/Sites/portfolio.tomrandle.com/theme/custom/templates/archives.html",
+		"/Users/tom/Dropbox/Sites/portfolio.tomrandle.com/theme/bootstrap2/templates/sidebar.html",
+		"/Users/tom/Dropbox/Sites/portfolio.tomrandle.com/content/test.rst",
+		"/Users/tom/Dropbox/Sites/portfolio.tomrandle.com/content/test.html",
+		"/Users/tom/Dropbox/Sites/portfolio.tomrandle.com/content/4-annihilation.rst",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com/css/mrfoxandmrspb.css",
+		"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com/index.html",
+		"/Users/tom/Dropbox/html/mrfoxandmrspbfullpageimages/css/mrfoxandmrspb.css",
+		"/Users/tom/Dropbox/html/mrfoxandmrspbfullpageimages/index.html"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new,<open folders>",
+			"/Users/tom/Dropbox/Sites/thefoxandthepolarbear.com-new",
+			"<open files>,<open folders>",
+			"<open files>",
+			"/Users/tom/Dropbox/Sites/portfolio.tomrandle.com/theme/bootstrap2",
+			"<open folders>",
+			"/Users/tom/Dropbox/Python/hyde",
+			"/Users/tom/Dropbox/Python/hyde/site/content,/Users/tom/Dropbox/Python/hyde/site/layou"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"lowReadings",
+			"updateLog",
+			"fs",
+			"console",
+			"console.log",
+			"keyboa",
+			"conso",
+			"Sheep",
+			"sheep",
+			"timeSpotted",
+			"sheepQueue",
+			"sheep",
+			"activeSensor",
+			"sheepQueue",
+			"console.lo",
+			"time",
+			"get",
+			"current",
+			"get",
+			"time",
+			"keyb",
+			"game",
+			"date",
+			"current",
+			"curren",
+			"reading",
+			"keyP",
+			"for",
+			"key",
+			"require(\"johnny-five\"",
+			"five",
+			"keyPr",
+			"key",
+			"fs",
+			"keyb",
+			"solenoid",
+			"check",
+			"cehck",
+			"thr",
+			"read",
+			"sheep",
+			"key",
+			"read",
+			"Read",
+			"console.",
+			"triggerThreshold",
+			"mediumLength",
+			"shortLength",
+			"update",
+			"reading",
+			"readings",
+			"latestReadings",
+			"csvheadings",
+			"values",
+			"headings",
+			"console.log",
+			"unactionedKeypress",
+			"unactione",
+			"key",
+			"console.log",
+			"latestLog",
+			"logItem",
+			"win",
+			"window",
+			"logH",
+			"loghis",
+			"log his",
+			"solenoidStates",
+			"keypress",
+			"keyPre",
+			"log",
+			"sensorsNew",
+			"sensors",
+			"console.log",
+			"solenoidsNew",
+			"pins",
+			"down",
+			"false",
+			"exit()",
+			"sys.exit()\nsys.exit()\nsys.exit()\nsys.exit()\nsys.exit()\n",
+			"sys.exit()\nexit",
+			"checkForSheep",
+			"analog",
+			"console.log",
+			"top",
+			"answerS",
+			"color",
+			"{\n",
+			"color",
+			"backg",
+			"console.log",
+			"Bullet",
+			"bullet",
+			"console.log",
+			"bullet",
+			"bulle",
+			"console.lo",
+			"bullet",
+			"draw",
+			"bu",
+			"bullet",
+			"draw",
+			"bullet",
+			"angle",
+			"bulle",
+			"bullet",
+			"ammo",
+			"collis",
+			"b",
+			"player.dr",
+			"draw",
+			"coord",
+			"coordina",
+			"collis",
+			"conso",
+			"bulle",
+			"player",
+			"start",
+			"sta",
+			"coll",
+			"Col",
+			"check",
+			"a",
+			"topLeftY",
+			"topLeftX",
+			"line",
+			"height",
+			"ctx"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"bottomReadings",
+			"TRIGGER_THRESHOLD",
+			"MEDIUM_LENGTH",
+			"SHORT_LENGTH",
+			"shortReadings",
+			"csvHeadings",
+			"csvValues",
+			"csvheadings",
+			"activeKeypress",
+			"logItem",
+			"latestLog",
+			"sensors",
+			"solenoids",
+			"sensorPins",
+			"plane",
+			"b",
+			"topRightY",
+			"topRightX",
+			"canvas",
+			"planeHeight",
+			"planeWidth",
+			";",
+			"=",
+			"angleOfAttack",
+			"planeDirection",
+			"Math.PI",
+			"math.PI",
+			"canvasHeight",
+			"canvasWidth"
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 6,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "main.js",
+					"settings":
+					{
+						"buffer_size": 6720,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								640,
+								640
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "logData.js",
+					"settings":
+					{
+						"buffer_size": 599,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								357,
+								405
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "solenoid.js",
+					"settings":
+					{
+						"buffer_size": 457,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								47,
+								47
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "webpage/css/main.css",
+					"settings":
+					{
+						"buffer_size": 3778,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1187,
+								1187
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 770.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "webpage/index.html",
+					"settings":
+					{
+						"buffer_size": 4302,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								888,
+								888
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "webpage/text.html",
+					"settings":
+					{
+						"buffer_size": 7340,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								44,
+								57
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 38.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 58.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": false,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 247.0,
+	"status_bar_visible": true
+}
