@@ -1,4 +1,4 @@
-$base : 18px;
+$base : 16px;
 $bodyColour : #123;
 $headingColour : #234;
 
@@ -6,6 +6,7 @@ body {
     font-family: 'Oxygen', sans-serif; 
     font-weight: 300; 
     color:$bodyColour;
+    font-size: $base;
 }
 
 .wrapper {
@@ -35,7 +36,6 @@ h4 {
 }
 p {
     line-height: $base * 2;
-    font-size: $base;
     margin-top:0;
     margin-bottom: $base * 1.5;
   
