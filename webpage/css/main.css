@@ -44,14 +44,11 @@ table {
     padding: 8px; }
 
 figure {
-  margin-bottom: 24px; }
+  margin: 32px 0; }
   figure iframe {
     width: 800px;
     height: 450px; }
 
 /* Bill of materials */
-.bill-of-materials {
-  width: 60%; }
-
 .number-column {
   text-align: right; }

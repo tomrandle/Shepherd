@@ -76,7 +76,7 @@ table {
 }
 
 figure {
-    margin-bottom: $base * 1.5;
+    margin: $base * 2 0;
     iframe {
         width:800px;
         height: 450px;
@@ -87,7 +87,6 @@ figure {
 /* Bill of materials */
 
 .bill-of-materials {
-    width:60%;
 }
 
 .number-column {
