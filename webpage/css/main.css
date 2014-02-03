@@ -1,3 +1,4 @@
+/* Colours from http://chriskempson.github.io/base16/#eighties */
 body {
   font-family: 'Oxygen', sans-serif;
   font-weight: 300;
@@ -30,7 +31,7 @@ p {
   margin-bottom: 24px; }
 
 a {
-  color: #98d488; }
+  color: #99cc99; }
 
 /* Images and Video */
 img {

@@ -16,7 +16,7 @@
         <link href='http://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
 
         <!-- <link rel="stylesheet" href="http://basehold.it/16"> -->
-        
+
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
@@ -112,6 +112,10 @@
             <p>Following some advice from a developer buddy I decided to program the code in a basic loop. Every 50ms the application loops through each lane, reading the sensor values, deciding if any sheep have arrived, and working out whether the solenoid should be up or down.</p>
 
             <p>The hardest part was accurately detecting the sheep. I found comparing a short rolling average to a longer one worked fairly well, although I’m sure I could have done something more intelligent. I couldn’t just use a static value as the ambient lighting changed too much and the game actually varies depending on the time of day!</p>
+
+            <figure>
+                <img src="webpage/img/graph3.svg">
+            </figure>
 
             <p>By placing the LDRs as close as possible to the solenoids I could neglect variations in sheep speed and size (although I may revisit this if I build the robot again!). The most frustrating part of the process was testing the detection and solenoid timings. Exporting a log helped, especially with the sheep detection, but to get the timings right I had to run the game many, many times!</p>
 

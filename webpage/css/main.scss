@@ -1,7 +1,19 @@
 $base : 16px;
+
 $bodyColour : #4E5153;
 $headingColour : #234;
-$linkColour: #98D488;
+
+
+/* Colours from http://chriskempson.github.io/base16/#eighties */
+
+$red : #F2777A;
+$orange: #F99157;
+$yellow: #FC6;
+$green: #9C9;
+$aqua: #6CC;
+$blue: #69C;
+$purple: #C9C;
+$brown: #D27B53;
 
 
 body {
@@ -46,7 +58,7 @@ p {
 }
 
 a {
-    color:$linkColour;
+    color:$green;
 }
 /* Images and Video */
 
