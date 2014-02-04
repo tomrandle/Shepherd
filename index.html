@@ -114,7 +114,7 @@
 
             <p>In my final build I also added some LEDs to show when sheep were detected.</p>
 
-            <p>I did briefly consider modifying the design slightly to use two LDRs for each lane connected together in a <a href="http://en.wikipedia.org/wiki/Wheatstone_bridgehttp://en.wikipedia.org/wiki/Wheatstone_bridgehttp://en.wikipedia.org/wiki/Wheatstone_bridge">Wheatstone bridge</a> to make it easier to detect sheep and work out their speeds, but in the end it proved unnecessary.</p>
+            <p>I did briefly consider modifying the design slightly to use two LDRs for each lane connected together in a <a href="http://en.wikipedia.org/wiki/Wheatstone_bridge">Wheatstone bridge</a> to make it easier to detect sheep and work out their speeds, but in the end it proved unnecessary.</p>
 
             <h3>The Code</h3>
 
@@ -134,58 +134,6 @@
             <p>By placing the LDRs as close as possible to the solenoids I could neglect variations in sheep speed and size (although I may revisit this if I build the robot again!). The most frustrating part of the process was testing the detection and solenoid timings. Exporting a log helped, especially with the sheep detection, but to get the timings right I had to run the game many, many times!</p>
 
             <p>I tried a adding a 4th sensor to help work out when the was running, but this proved more trouble than it was worth and in the end I just added a keyboard input.</p>
-
-            <h3>Bill of Materials</h3>
-
-            <table class="bill-of-materials">
-                <tr>
-                    <th>Item</th>
-                    <th>Description</th>
-                    <th>Qty.</th>
-                </tr>
-                <tr>
-                    <td>Arduino Uno</td>
-                    <td class="number-column">1</td>
-                </tr>
-                <tr>
-                    <td>Light Dependent Resistor (LDR)</td>
-                    <td class="number-column">3</td>
-                </tr>
-                <tr>
-                    <td>Light Dependent Resistor (LDR)</td>
-                    <td class="number-column">3</td>
-                </tr>
-                 <tr>
-                    <td>Resistor (for LDR)</td>
-                    <td class="number-column">3</td>
-                </tr>
-                <tr>
-                    <td>TIP120 Transistors</td>
-                    <td>http://www.adafruit.com/datasheets/TIP120.pdf</td>
-                    <td class="number-column">3</td>
-                </tr>
-                <tr>
-                    <td>Resistor (for transistor)</td>
-                    <td class="number-column">3</td>
-                </tr>
-               <tr>
-                    <td>Solenoids</td>
-                    <td class="number-column">3</td>
-                </tr>
-                 <tr>
-                    <td>Diodes (for solenoids)</td>
-                    <td class="number-column">3</td>
-                </tr>
-                <tr>
-                    <td>LEDs</td>
-                    <td class="number-column">3</td>
-                </tr>
-                <tr>
-                    <td>Resistor (for LEDs)</td>
-                    <td class="number-column">3</td>
-                </tr>
-
-            </table>
 
             <h3>Next steps</h3>
 

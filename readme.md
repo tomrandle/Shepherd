@@ -5,14 +5,19 @@ Arduino / Johnny Five Robot.
 
 http://tomrandle.github.io/Shepherd/
 
-## Circuit
+##Parts list
 
 
-Solenoid wiring
-http://bildr.org/2011/03/high-power-control-with-arduino-and-tip120/
+| Bah                          | Qty  |
+|------------------------------|-----:|
+|Arduino Uno                   |1     |
+|12V power supply              |3     |
+|LDR                           |3     |
+|10K Resistor (for LDR)        |3     |
+|TIP120 Transistors            |3     |
+|2.2Ω resistor (for transistor)|3     |
+|Solenoid                      |3     |
+|Diode (for solenoids)         |3     |
+|LED                           |3     |
+|220Ω resistor (for LED)       |3     |
 
-Photo resistor (LDR) wiring
-http://bildr.org/2012/11/photoresistor-arduino/
-
-Transistor specs 
-http://www.adafruit.com/datasheets/TIP120.pdf
