@@ -8,7 +8,7 @@ body {
 .wrapper {
   width: 800px;
   margin: 0 auto;
-  padding: 32px 0; }
+  padding: 64px 0; }
 
 /* Headings */
 header {
@@ -18,11 +18,11 @@ h1, h2, h3, h4, h5, h6 {
   color: #223344; }
 
 h1, h2 {
-  margin: 32px 0 16px 0;
+  margin: 48px 0 16px 0;
   line-height: 32px; }
 
-h4 {
-  margin-bottom: 16px; }
+h3, h4 {
+  margin: 32px 0 16px 0; }
 
 /* Typography */
 p {
@@ -31,14 +31,16 @@ p {
   margin-bottom: 24px; }
 
 a {
-  color: #66cccc; }
+  color: #f2777a; }
 
 /* Images and Video */
 img {
   max-width: 100%; }
 
 table {
-  text-align: left; }
+  text-align: left;
+  margin-bottom: 24px;
+  font-size: 14px; }
   table th, table td {
     border: 1px solid;
     padding: 8px; }
@@ -48,6 +50,15 @@ figure {
   figure iframe {
     width: 800px;
     height: 450px; }
+  figure figcaption {
+    margin: 16px 0;
+    font-size: 13px;
+    color: #808487; }
+
+.graph figcaption {
+  font-size: 16px;
+  font-weight: 600;
+  color: #223344; }
 
 /* Bill of materials */
 .number-column {

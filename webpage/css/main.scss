@@ -2,7 +2,7 @@ $base : 16px;
 
 $bodyColour : #4E5153;
 $headingColour : #234;
-
+$captionColour : lighten($bodyColour, 20%);
 
 /* Colours from http://chriskempson.github.io/base16/#eighties */
 
@@ -26,7 +26,7 @@ body {
 .wrapper {
     width: 800px;
     margin: 0 auto;
-    padding:$base * 2 0;
+    padding:$base * 4 0;
 }
 
 
@@ -41,12 +41,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1,h2 { 
-    margin: $base * 2 0 $base 0;
+    margin: $base * 3 0 $base 0;
     line-height: $base * 2;
 }
 
-h4 {
-    margin-bottom: $base;
+h3, h4 {
+    margin: $base * 2 0 $base 0;
 }
 
 /* Typography */
@@ -58,7 +58,7 @@ p {
 }
 
 a {
-    color:$aqua;
+    color:$red;
 }
 /* Images and Video */
 
@@ -68,6 +68,8 @@ img {
 
 table {
     text-align: left;
+    margin-bottom: $base * 1.5;
+    font-size: 14px;
 
     th, td {
         border:1px solid;
@@ -81,6 +83,17 @@ figure {
         width:800px;
         height: 450px;
     }
+    figcaption {
+        margin: $base 0;
+        font-size: 13px;
+        color: $captionColour;  
+    }
+}
+
+.graph figcaption {
+    font-size: 16px;
+    font-weight: 600;
+    color: $headingColour;
 }
 
 

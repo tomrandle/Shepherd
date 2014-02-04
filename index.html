@@ -3,17 +3,14 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
+        <title>Shepherd - The leap sheep cheating machine.</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
         <link rel="stylesheet" href="webpage/css/normalize.min.css">
         <link rel="stylesheet" href="webpage/css/main.css">
 
-        <link href='http://fonts.googleapis.com/css?family=Kite+One' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
-
-        <link href='http://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
 
         <!-- <link rel="stylesheet" href="http://basehold.it/16"> -->
 
@@ -37,6 +34,8 @@
     
             <figure>
                 <img src="webpage/img/game-diagram.svg">
+                <figcaption>
+                    <strong>Basic setup</strong> - Sheep run under the light sensor and then the solenoid taps the screen to make the sheep jump over the fence.</figcaption>
             </figure>
 
 
@@ -46,9 +45,11 @@
 
             <figure>
                 <img src="webpage/img/shepherd-v1.jpg">
+                <figcaption>
+                    <strong>Version 1</strong> - First (rather messy!) version designed to play an iPhone rather than iPad.</figcaption>
             </figure>
 
-            <p>Working on the project on and off, i’ve now built the robot three times! The first attempt was designed to play an iPhone and was programmed in C. It worked, just about, but the code got a bit out of hand and struggled to fit everything in. About a year later I decided to pick the project up again and rebuilt it entirely to play an iPad instead. This time I decided to tether the Arduino to my computer so I could program in Python. It was an improvement but wedding plans took over and I never finished it. This year I decided to pick it up again and rewrite the code from scratch a second time using Javascript and Node. </p>
+            <p>Working on the project on and off, i’ve now built the robot three times! The first attempt was designed to play an iPhone and was programmed in C. It worked, just about, but the code got a bit out of hand and struggled to fit everything in. About a year later I decided to pick the project up again and rebuilt it entirely to play an iPad instead. This time I decided to tether the Arduino to my computer so I could program in Python. It was an improvement but wedding plans took over and I never finished it. This year I decided to pick it up again and rewrite the code from scratch a second time using Javascript and Node.</p>
 
             <p class="aside">Note: If I was an artist, or social commentator there's probably something deeply philosophical I could say about a device to play a game for you so you don’t have to, but I'm not. I'm just an engineer (sort of) who wanted to build a robot!</p>
 
@@ -64,6 +65,7 @@
 
             <figure>
                 <iframe src="//player.vimeo.com/video/85657331?title=0&amp;byline=0&amp;portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <figcaption><strong>LDR Experiment</strong> - The resistance decreases as sheep pass under the light sensor.</figcaption>
             </figure>
 
             <h4>How to trigger the screen?</h4>
@@ -73,6 +75,7 @@
 
             <figure>
                 <iframe src="//player.vimeo.com/video/85856335?title=0&amp;byline=0&amp;portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <figcaption><strong>Servo Experiment</strong> - The servo triggered the screen but not very efficiently!</figcaption>
             </figure>
 
             <p>To check I held a stylus with some insulated pliers and found it didn’t work.</p>
@@ -95,21 +98,22 @@
 
             <p>At first I mocked up the electronics on a breadboard before moving to stripboard.</p>
 
-            <figure>
-                <img src="webpage/img/circuit-example.svg">
-                <figcaption>
-                </figaption>
-            </figure>
-
             <p>For the LDRs I just had to set up 3 simple <a href="http://en.wikipedia.org/wiki/Voltage_divider">potential divider</a> circuits and connect them to the Arduino’s analog inputs.</p>
 
             <p>For the solenoids I found a circuit on <a href="">bildr.org</a> (an excellent resource for learning how to use different sensors and componets with the Arduino). Solenoids require more current than the Arduino can provide so they need an external power source. Transistors allow the low power Arduino output to switch the high power supply on and off. A diode protects circuit from the <a href="http://en.wikipedia.org/wiki/Counter-electromotive_force">back EMF</a> caused by the solenoids discharging.</p>
 
+                    <figure>
+                <img src="webpage/img/circuit-example.svg">
+                <figcaption>
+                    <strong>Basic circuit diagram</strong> - The LDR and solenoid circuits
+                </figaption>
+            </figure>
+
             <p>In my final build I also added some LEDs to show when sheep were detected.</p>
 
-            <p>I did briefly consider modifying the design slightly to use two LDRs for each lane connected together in a <a href="http://en.wikipedia.org/wiki/Wheatstone_bridgehttp://en.wikipedia.org/wiki/Wheatstone_bridgehttp://en.wikipedia.org/wiki/Wheatstone_bridge">Wheatstone bridge</a>tone bridge</a>, to make it easier to detect sheep and work out their speeds, but in the end it proved unnecessary.</p>
+            <p>I did briefly consider modifying the design slightly to use two LDRs for each lane connected together in a <a href="http://en.wikipedia.org/wiki/Wheatstone_bridgehttp://en.wikipedia.org/wiki/Wheatstone_bridgehttp://en.wikipedia.org/wiki/Wheatstone_bridge">Wheatstone bridge</a> to make it easier to detect sheep and work out their speeds, but in the end it proved unnecessary.</p>
 
-            <h3>The Code </h3>
+            <h3>The Code</h3>
 
             <p>After getting in over my head with programming directly on the Arduino with C, I decided to tether the Arduino to a computer and rewrite the application in Python. I installed  <a href="http://firmata.org/">Firmata</a> on the board and then used the <a href="https://github.com/tino/pyFirmata">pyFirmata</a> library to control it.</p>
 
@@ -119,7 +123,8 @@
 
             <p>The hardest part was accurately detecting the sheep. I found comparing a short rolling average to a longer one worked fairly well, although I’m sure I could have done something more intelligent. I couldn’t just use a static value as the ambient lighting changed too much and the game actually varies depending on the time of day!</p>
 
-            <figure>
+            <figure class="graph">
+                <figcaption>Sensor readings</figcaption>
                 <img src="webpage/img/graph.svg">
             </figure>
 
