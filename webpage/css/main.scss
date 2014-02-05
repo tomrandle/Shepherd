@@ -17,6 +17,20 @@ $blue: #69C;
 $purple: #C9C;
 $brown: #D27B53;
 
+/*h2:nth-of-type(1) {color:$orange;}
+h2:nth-of-type(2) {color:$yellow;}
+h2:nth-of-type(3) {color:$green;}
+h2:nth-of-type(4) {color:$aqua;}
+h2:nth-of-type(5) {color:$purple;}*/
+
+.hero {
+    iframe {
+        width: 100%;
+        min-height: 100%;
+    }
+
+}
+
 body {
     font-family: 'Oxygen', sans-serif; 
     font-weight: 300; 
@@ -42,12 +56,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1,h2 { 
-    margin: $base * 3 0 $base 0;
+    margin: $base * 4 0 $base 0;
     line-height: $base * 2;
 }
 
 h3, h4 {
-    margin: $base * 2 0 $base 0;
+    margin: $base * 3 0 $base 0;
 }
 
 /* Typography */
@@ -105,9 +119,9 @@ figure {
     color: $blue;
     border: 2px solid lighten($blue,20%);
     padding: $base;
-    margin-top:$base * 3;
-    padding-top: $base * 2;
+    margin:$base * 5 0;
     font-size:$base - 1px;
+    overflow: hidden;
     
     .avatar {
         width:120px;
@@ -118,9 +132,13 @@ figure {
         margin-left: 120px + $base * 2;
    }
 
-    h2 {
-        margin-top: 0;
+    h6 {
+        margin-top: $base;
         margin-bottom: $base * 0.5;
         font-size:$base + 1px;
+    }
+
+    p {
+        margin-bottom: 0;
     }
 }

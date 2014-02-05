@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Shepherd - The leap sheep cheating machine.</title>
-        <meta name="description" content="">
+        <title>Shepherd - The leap sheep cheating machine</title>
+        <meta name="description" content="Shepherd - The leap sheep cheating machine">
         <meta name="viewport" content="width=device-width">
 
         <link rel="stylesheet" href="webpage/css/normalize.min.css">
@@ -12,10 +12,7 @@
 
         <link rel="shortcut icon" href="webpage/img/favicon.png" type="image/png">
 
-
         <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
-
-        <!-- <link rel="stylesheet" href="http://basehold.it/16"> -->
 
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
@@ -23,6 +20,12 @@
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
+
+        <div class="hero">
+            <iframe src="//player.vimeo.com/video/85657331?title=0&amp;byline=0&amp;portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></p>
+
+        </div>
+
 
         <div class="wrapper">
             <header>
@@ -40,7 +43,6 @@
                 <figcaption>
                     <strong>Basic setup</strong> - Sheep run under the light sensor and then the solenoid taps the screen to make the sheep jump over the fence.</figcaption>
             </figure>
-
 
             <h2>Background</h2>
 
@@ -97,9 +99,7 @@
 
             <h3>The Electronics</h3>
 
-            <p>At first I mocked up the electronics on a breadboard before moving to stripboard.</p>
-
-            <p>For the LDRs I just had to set up 3 simple <a href="http://en.wikipedia.org/wiki/Voltage_divider">potential divider</a> circuits and connect them to the Arduino’s analog inputs.</p>
+            <p>At first I mocked up the electronics on a breadboard before moving to stripboard. For the LDRs I just had to set up 3 simple <a href="http://en.wikipedia.org/wiki/Voltage_divider">potential divider</a> circuits and connect them to the Arduino’s analog inputs.</p>
 
             <p>For the solenoids I found a circuit on <a href="">bildr.org</a> (an excellent resource for learning how to use different sensors and componets with the Arduino). Solenoids require more current than the Arduino can provide so they need an external power source. Transistors allow the low power Arduino output to switch the high power supply on and off. A diode protects circuit from the <a href="http://en.wikipedia.org/wiki/Counter-electromotive_force">back EMF</a> caused by the solenoids discharging.</p>
 
@@ -135,7 +135,9 @@
 
             <p>I tried a adding a 4th sensor to help work out when the was running, but this proved more trouble than it was worth and in the end I just added a keyboard input.</p>
 
-            <h3>Next steps</h3>
+            <p><a href="https://github.com/tomrandle/Shepherd">You can see the finished code on GitHub.</a></p>
+            
+            <h2>Next steps</h2>
 
             <p>My original aim was to build a robot that was better at playing the game than a human. At the moment it’s not quite there.</p>
 
@@ -143,7 +145,7 @@
 
             <p>To get a decent score though I need to add a second row of solenoids to tap the sheep when they’re in the air as this multiplies the points you get for each seep by 10!</p>
             
-            <h3>Your turn</h3>
+            <h2>Your turn</h2>
 
             <p>Finally, if you're crazy enough, I'd like to challenge you to make your own Leap Sheep cheating machine. I'd be fascinated to see other people's approaches!<p>
 
@@ -152,7 +154,7 @@
                     <img src="webpage/img/tom-randle.png">
                 </div>
                 <div class="bio-content">
-                    <h2>Tom Randle</h2>
+                    <h6>Tom Randle</h6>
                     <p>I'm an engineering graduate turned product manager at a London software company. Most my spare time's spent making things like this and taking photos! <a href="http://tomrandle.com/">www.tomrandle.com</a></p>
                 </div>
             </div>

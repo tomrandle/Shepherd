@@ -1,5 +1,14 @@
 /* Variables */
 /* Colours from http://chriskempson.github.io/base16/#eighties */
+/*h2:nth-of-type(1) {color:$orange;}
+h2:nth-of-type(2) {color:$yellow;}
+h2:nth-of-type(3) {color:$green;}
+h2:nth-of-type(4) {color:$aqua;}
+h2:nth-of-type(5) {color:$purple;}*/
+.hero iframe {
+  width: 100%;
+  min-height: 100%; }
+
 body {
   font-family: 'Oxygen', sans-serif;
   font-weight: 300;
@@ -19,11 +28,11 @@ h1, h2, h3, h4, h5, h6 {
   color: #223344; }
 
 h1, h2 {
-  margin: 48px 0 16px 0;
+  margin: 64px 0 16px 0;
   line-height: 32px; }
 
 h3, h4 {
-  margin: 32px 0 16px 0; }
+  margin: 48px 0 16px 0; }
 
 /* Typography */
 p {
@@ -67,15 +76,17 @@ figure {
   color: #6699cc;
   border: 2px solid #b3cce6;
   padding: 16px;
-  margin-top: 48px;
-  padding-top: 32px;
-  font-size: 15px; }
+  margin: 80px 0;
+  font-size: 15px;
+  overflow: hidden; }
   .bio .avatar {
     width: 120px;
     float: left; }
   .bio .bio-content {
     margin-left: 152px; }
-  .bio h2 {
-    margin-top: 0;
+  .bio h6 {
+    margin-top: 16px;
     margin-bottom: 8px;
     font-size: 17px; }
+  .bio p {
+    margin-bottom: 0; }
