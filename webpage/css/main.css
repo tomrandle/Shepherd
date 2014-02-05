@@ -1,3 +1,4 @@
+/* Variables */
 /* Colours from http://chriskempson.github.io/base16/#eighties */
 body {
   font-family: 'Oxygen', sans-serif;
@@ -45,6 +46,7 @@ table {
     border: 1px solid;
     padding: 8px; }
 
+/* Figures */
 figure {
   margin: 32px 0; }
   figure iframe {
@@ -60,6 +62,20 @@ figure {
   font-weight: 600;
   color: #223344; }
 
-/* Bill of materials */
-.number-column {
-  text-align: right; }
+/* Bio */
+.bio {
+  color: #6699cc;
+  border: 2px solid #b3cce6;
+  padding: 16px;
+  margin-top: 48px;
+  padding-top: 32px;
+  font-size: 15px; }
+  .bio .avatar {
+    width: 120px;
+    float: left; }
+  .bio .bio-content {
+    margin-left: 152px; }
+  .bio h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 17px; }

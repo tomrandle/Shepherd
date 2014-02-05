@@ -1,3 +1,5 @@
+/* Variables */
+
 $base : 16px;
 
 $bodyColour : #4E5153;
@@ -15,11 +17,10 @@ $blue: #69C;
 $purple: #C9C;
 $brown: #D27B53;
 
-
 body {
     font-family: 'Oxygen', sans-serif; 
     font-weight: 300; 
-    color:$bodyColour;
+    color: $bodyColour;
     font-size: $base;
 }
 
@@ -77,6 +78,8 @@ table {
     }
 }
 
+/* Figures */
+
 figure {
     margin: $base * 2 0;
     iframe {
@@ -96,13 +99,28 @@ figure {
     color: $headingColour;
 }
 
+/* Bio */
 
-/* Bill of materials */
+.bio {
+    color: $blue;
+    border: 2px solid lighten($blue,20%);
+    padding: $base;
+    margin-top:$base * 3;
+    padding-top: $base * 2;
+    font-size:$base - 1px;
+    
+    .avatar {
+        width:120px;
+        float: left;
+   }
+   
+   .bio-content {
+        margin-left: 120px + $base * 2;
+   }
 
-.bill-of-materials {
+    h2 {
+        margin-top: 0;
+        margin-bottom: $base * 0.5;
+        font-size:$base + 1px;
+    }
 }
-
-.number-column {
-    text-align: right;
-}
-
