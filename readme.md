@@ -9,7 +9,7 @@ http://tomrandle.github.io/Shepherd/
 
 ##Parts list
 
-|Bah                            | Qty  |
+|Part                           | Qty  |
 |:------------------------------|-----:|
 |Arduino Uno                    |1     |
 |12V power supply               |3     |
