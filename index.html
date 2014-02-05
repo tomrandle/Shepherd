@@ -64,7 +64,7 @@
             
             <h4>How to detect sheep?</h4>
 
-            <p>My hunch was that a simple light dependent resistor (LDR) would be able to detect changes in brightnesses in the game. To check I strapped an LDR to the screen and measured the resistance. To my delight it worked first time.</p>
+            <p>My hunch was that a simple light dependent resistor (LDR) would be able to detect changes in brightnesses in the game. To check I strapped an LDR to the screen and measured the resistance. It worked first time!</p>
 
             <figure>
                 <iframe src="//player.vimeo.com/video/85657331?title=0&amp;byline=0&amp;portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -74,18 +74,18 @@
             <h4>How to trigger the screen?</h4>
 
             <p>Triggering the screen split into two problems 1) How to simulate a finger 2) How to move the ‘finger’ up and down.</p>
-            <p>I’d read a weird article about how some Koreans were using <a href="http://www.engadget.com/2010/02/11/south-korean-iphone-users-turn-to-sausages-as-a-cold-weather-me/">sausages as styluses</a> in the winter because touch screens wouldn’t work through gloves so thought simulating touch might be a problem.</p>
-
-            <figure>
-                <iframe src="//player.vimeo.com/video/85856335?title=0&amp;byline=0&amp;portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                <figcaption><strong>Servo Experiment</strong> - The servo triggered the screen but not very efficiently!</figcaption>
-            </figure>
+            <p>I’d read a weird article about how some Koreans were using <a href="http://www.engadget.com/2010/02/11/south-korean-iphone-users-turn-to-sausages-as-a-cold-weather-me/">sausages as styluses</a> in the winter because touch screens wouldn’t work through gloves, so thought simulating touch might be a problem.</p>
 
             <p>To check I held a stylus with some insulated pliers and found it didn’t work.</p>
 
             <p>I then conducted some very strange experiments involving carrots before <a href="http://electronics.stackexchange.com/questions/23036/how-can-a-capacitive-touch-screen-be-triggered-without-human-contact">asking a question on the Electrical Engineering Stack Exchange</a> and discovering that all you needed to do was ground the stylus!</p>
 
             <p>For actuating the stylus my initial thought was to use servos. I'd used them before and they're relatively inexpensive. However translating the motion to linear and getting the timing and speed required proved to be more or less impossible.</p>
+
+            <figure>
+                <iframe src="//player.vimeo.com/video/85856335?title=0&amp;byline=0&amp;portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <figcaption><strong>Servo Experiment</strong> - The servo triggered the screen but not very efficiently!</figcaption>
+            </figure>
 
             <p>I therefore decided to buy some solenoids off eBay. They worked perfectly and, although they required a bit more circuitry, they also had the added benefit that they could be connected to the styluses directly.</p>
 
