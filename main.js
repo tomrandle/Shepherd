@@ -58,15 +58,15 @@ function game() {
         var lanes = [
             {
                 'name' : 'topLane',
-                'lane' : new Lane('A0',1.01,200,10,'i',3),
+                'lane' : new Lane('A2',1.02,400,5,'i',8),
             },
             {
                 'name' : 'middleLane',
-                'lane' : new Lane('A1',1.02,80,9,'o',4),
+                'lane' : new Lane('A1',1.03,250,6,'o',9),
             },
             {
                 'name' : 'bottomLane',
-                'lane' : new Lane('A2',1.02,80,8,'p',5),
+                'lane' : new Lane('A0',1.03,400,7,'p',10),
             }
         ];
 
@@ -134,12 +134,15 @@ function game() {
 game();
 
 function Lane(sensorPin, sensorThreshold, sensorDelay, solenoidPin, solenoidKey, ledPin) {
-    
+
     this.sensor = new Sensor (sensorPin, sensorThreshold);
     this.solenoid = new Solenoid (solenoidPin);
     this.led = new Led (ledPin);
     this.alreadyActive = false; 
     this.sheepQueue = [];
+    this.solenoidKey = solenoidKey;
+    this.sensorDelay = sensorDelay;
+    this.solenoidPin = solenoidPin;
 
     this.activeSensor = function () {
         return this.sensor.isTriggered();
@@ -172,8 +175,7 @@ function Lane(sensorPin, sensorThreshold, sensorDelay, solenoidPin, solenoidKey,
 
             var timeKeyPressed = keyPresses[i].timePressed;
 
-            if (keyPresses[i].key === solenoidKey && currentTime() < timeKeyPressed + SOLENOID_PRESS_TIME) {
-
+            if (keyPresses[i].key === this.solenoidKey && currentTime() < timeKeyPressed + SOLENOID_PRESS_TIME) {
                 this.solenoid.fireSolenoid();
             }
 
@@ -185,7 +187,7 @@ function Lane(sensorPin, sensorThreshold, sensorDelay, solenoidPin, solenoidKey,
 
             var timeSpotted = this.sheepQueue[i].timeSpotted;
 
-            if (currentTime() < timeSpotted + sensorDelay + SOLENOID_PRESS_TIME && currentTime() > timeSpotted + sensorDelay) {
+            if (currentTime() < timeSpotted + this.sensorDelay + SOLENOID_PRESS_TIME && currentTime() > timeSpotted + this.sensorDelay) {
                 this.solenoid.fireSolenoid();
             }
         }
