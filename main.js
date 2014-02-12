@@ -62,11 +62,11 @@ function game() {
             },
             {
                 'name' : 'middleLane',
-                'lane' : new Lane('A1',1.03,250,6,'o',9,3,500),
+                'lane' : new Lane('A1',1.03,200,6,'o',9,3,500),
             },
             {
                 'name' : 'bottomLane',
-                'lane' : new Lane('A0',1.03,400,7,'p',10,4,500),
+                'lane' : new Lane('A0',1.03,400,7,'p',10,4,550),
             }
         ];
 
@@ -139,18 +139,22 @@ function Lane(sensorPin, sensorThreshold, sensorDelay, solenoidPin, solenoidKey,
     this.solenoid = new Solenoid (solenoidPin);
     this.led = new Led (ledPin);
     this.alreadyActive = false; 
-    this.sheepQueue = [];
     this.solenoidKey = solenoidKey;
     this.sensorDelay = sensorDelay;
     this.solenoidPin = solenoidPin;
     this.secondSolenoid = new Solenoid (secondSolenoidPin);
     this.secondDelay = secondDelay;
 
+    this.sheepQueue = [];
+
     this.activeSensor = function () {
         return this.sensor.isTriggered();
     }
 
     this.updateSheep = function () {
+
+        //Todo: make this smarter so it works out the speed of the sheep. 
+
         if (this.activeSensor() === true && this.alreadyActive === false)
         {
             this.alreadyActive = true;
@@ -193,7 +197,7 @@ function Lane(sensorPin, sensorThreshold, sensorDelay, solenoidPin, solenoidKey,
             var timeSpotted = this.sheepQueue[i].timeSpotted;
 
             // Todo: tidy up these calculations
-            
+
             if (currentTime() < timeSpotted + this.sensorDelay + SOLENOID_PRESS_TIME && currentTime() > timeSpotted + this.sensorDelay) {
                 this.solenoid.fireSolenoid();
             }
