@@ -58,15 +58,15 @@ function game() {
         var lanes = [
             {
                 'name' : 'topLane',
-                'lane' : new Lane('A2',1.02,400,5,'i',8,2,500),
+                'lane' : new Lane('A2',1.02,1,5,'i',8,2,2),
             },
             {
                 'name' : 'middleLane',
-                'lane' : new Lane('A1',1.03,200,6,'o',9,3,500),
+                'lane' : new Lane('A1',1.03,0.5,6,'o',9,3,2),
             },
             {
                 'name' : 'bottomLane',
-                'lane' : new Lane('A0',1.03,400,7,'p',10,4,550),
+                'lane' : new Lane('A0',1.03,1,7,'p',10,4,2),
             }
         ];
 
@@ -153,19 +153,27 @@ function Lane(sensorPin, sensorThreshold, sensorDelay, solenoidPin, solenoidKey,
 
     this.updateSheep = function () {
 
-        //Todo: make this smarter so it works out the speed of the sheep. 
+        //Todo: make this smarter so it works out the speed of the sheep.
 
         if (this.activeSensor() === true && this.alreadyActive === false)
         {
             this.alreadyActive = true;
             this.led.turnLedOn();
             var newSheep = new Sheep(currentTime());
-
-            beep();
             this.sheepQueue.push(newSheep); 
         }
-            
+
         else if (this.activeSensor() === false) {
+
+            if (this.alreadyActive === true) {
+
+                var arrayLength = this.sheepQueue.length;
+
+                // Update finished time 
+                this.sheepQueue[arrayLength - 1].timePassed = currentTime();
+                beep();
+            }
+
             this.alreadyActive = false;
             this.led.turnLedOff();
         }
@@ -195,10 +203,20 @@ function Lane(sensorPin, sensorThreshold, sensorDelay, solenoidPin, solenoidKey,
         for (var i=0; i < this.sheepQueue.length; i++) {
 
             var timeSpotted = this.sheepQueue[i].timeSpotted;
+            var timeToPass = this.sheepQueue[i].timeToPass();
+
+            var firstArrivalTime = timeSpotted + (timeToPass * this.sensorDelay);
+            var firstPassTime = firstArrivalTime + SOLENOID_PRESS_TIME;
+
+            var secondArrivalTime = timeSpotted + (timeToPass * this.secondDelay);
+            var secondPassTime = secondArrivalTime + SOLENOID_PRESS_TIME;
+
+
+            console.log(currentTime(), firstArrivalTime, secondArrivalTime);
 
             // Todo: tidy up these calculations
 
-            if (currentTime() < timeSpotted + this.sensorDelay + SOLENOID_PRESS_TIME && currentTime() > timeSpotted + this.sensorDelay) {
+            if (currentTime() < timeSpotted + (this.sensorDelay * timeToPass) + SOLENOID_PRESS_TIME && currentTime() > timeSpotted + (this.sensorDelay * timeToPass)) {
                 this.solenoid.fireSolenoid();
             }
 
@@ -243,9 +261,6 @@ function keyboard() {
     });
 }
 
-
-
-
 function currentTime() {
     var date = new Date();
     return date.getTime();
@@ -264,7 +279,10 @@ function keyPress(key, timePressed) {
 
 var Sheep = function(timeSpotted) {
     this.timeSpotted = timeSpotted;
-    this.timePassed = '';
+    this.timePassed = '0';
+    this.timeToPass = function() {
+        return (this.timePassed - this.timeSpotted);
+    }
 }
 
 
