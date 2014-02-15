@@ -39,6 +39,7 @@ body {
 
 .wrapper {
   width: 800px;
+  max-width: 90%;
   margin: 0 auto;
   padding: 0 0 64px 0; }
 
@@ -81,8 +82,8 @@ table {
 figure {
   margin: 32px 0; }
   figure iframe {
-    width: 800px;
-    height: 450px; }
+    width: 100%;
+    height: auto; }
   figure figcaption {
     margin: 16px 0;
     font-size: 13px;
