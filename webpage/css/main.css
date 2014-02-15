@@ -20,11 +20,13 @@ h1 {
     .hero .intro p {
       margin: 16px 0; }
     .hero .intro span {
+      color: #223344;
       background: rgba(255, 255, 255, 0.8);
       padding: 8px 16px; }
     .hero .intro .secondary {
       font-size: 19.2px;
-      font-weight: normal; }
+      font-weight: normal;
+      color: #4e5153; }
   .hero figure {
     position: relative; }
   .hero .annotations {
@@ -150,10 +152,4 @@ figure {
     text-align: left;
     left: 0;
     top: 0;
-    font-size: 32px; }
-    .hero .intro span {
-      padding: 0;
-      background: none;
-      color: #223344; }
-    .hero .intro .secondary {
-      color: #4e5153; } }
+    font-size: 32px; } }
