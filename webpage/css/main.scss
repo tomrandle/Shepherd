@@ -24,11 +24,46 @@ h2:nth-of-type(4) {color:$aqua;}
 h2:nth-of-type(5) {color:$purple;}*/
 
 .hero {
-    iframe {
-        width: 100%;
-        min-height: 100%;
+
+    .intro {
+        position:absolute;
+        top:55%;
+        font-size: $base * 1.5;
+        left:15%;
+        z-index: 99;
+        font-weight: bold;
+
+        p {
+            margin:0;
+        }
+
+        span {
+            background: rgba(255,255,255,0.8);
+            padding:$base;
+        }
+
+        .secondary {
+            font-size: $base * 1.2;
+            font-weight: normal;
+        }
     }
 
+    
+
+}
+
+.logo {
+    width: 18%;
+    position: absolute;
+    top:15%;
+    right:15%;
+    z-index: 99;
+}
+
+.annotations {
+    position:absolute;
+    top:0;
+    left:0;
 }
 
 body {

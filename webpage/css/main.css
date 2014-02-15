@@ -5,9 +5,33 @@ h2:nth-of-type(2) {color:$yellow;}
 h2:nth-of-type(3) {color:$green;}
 h2:nth-of-type(4) {color:$aqua;}
 h2:nth-of-type(5) {color:$purple;}*/
-.hero iframe {
-  width: 100%;
-  min-height: 100%; }
+.hero .intro {
+  position: absolute;
+  top: 55%;
+  font-size: 24px;
+  left: 15%;
+  z-index: 99;
+  font-weight: bold; }
+  .hero .intro p {
+    margin: 0; }
+  .hero .intro span {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 16px; }
+  .hero .intro .secondary {
+    font-size: 19.2px;
+    font-weight: normal; }
+
+.logo {
+  width: 18%;
+  position: absolute;
+  top: 15%;
+  right: 15%;
+  z-index: 99; }
+
+.annotations {
+  position: absolute;
+  top: 0;
+  left: 0; }
 
 body {
   font-family: 'Oxygen', sans-serif;
