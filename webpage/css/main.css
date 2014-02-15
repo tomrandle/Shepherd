@@ -8,23 +8,23 @@ h1 {
   right: 10%;
   z-index: 99; }
 
-.hero .intro {
-  position: absolute;
-  top: 55%;
-  font-size: 28.8px;
-  left: 10%;
-  z-index: 99;
-  font-weight: bold;
-  color: #223344; }
-  .hero .intro p {
-    margin: 16px 0; }
-  .hero .intro span {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 8px 16px; }
-  .hero .intro .secondary {
-    font-size: 19.2px;
-    font-weight: normal;
-    color: #4e5153; }
+.hero {
+  width: 100%; }
+  .hero .intro {
+    position: absolute;
+    top: 55%;
+    font-size: 28.8px;
+    left: 10%;
+    z-index: 99;
+    font-weight: bold; }
+    .hero .intro p {
+      margin: 16px 0; }
+    .hero .intro span {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 8px 16px; }
+    .hero .intro .secondary {
+      font-size: 19.2px;
+      font-weight: normal; }
 
 .annotations {
   position: absolute;
@@ -40,7 +40,7 @@ body {
 .wrapper {
   width: 800px;
   margin: 0 auto;
-  padding: 64px 0; }
+  padding: 0 0 64px 0; }
 
 /* Headings */
 header {

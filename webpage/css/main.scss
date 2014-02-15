@@ -30,6 +30,8 @@ h1 {
 
 .hero {
 
+    width: 100%;
+    
     .intro {
         position:absolute;
         top:55%;
@@ -37,7 +39,7 @@ h1 {
         left:10%;
         z-index: 99;
         font-weight: bold;
-        color: $headingColour;
+
 
         p {
             margin:$base 0;
@@ -51,7 +53,6 @@ h1 {
         .secondary {
             font-size: $base * 1.2;
             font-weight: normal;
-            color: $bodyColour;
         }
     }
 }
@@ -72,7 +73,7 @@ body {
 .wrapper {
     width: 800px;
     margin: 0 auto;
-    padding:$base * 4 0;
+    padding:0 0 $base * 4 0;
 }
 
 
