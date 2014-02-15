@@ -7,7 +7,11 @@ $( document ).ready(function() {
 
     $( window ).resize(function() {
         var frameWidth = $( ".wrapper" ).width();
-        $('figure iframe').height("'" + frameWidth / WIDTH_TO_HEIGHT_RATIO + "px'");
+        var frameHeight = frameWidth / WIDTH_TO_HEIGHT_RATIO;
+        var cssHeight = frameHeight + 'px';
+
+        $('figure iframe').height(cssHeight);
+
     });
 
 });
