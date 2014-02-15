@@ -1,9 +1,14 @@
 
-/* Set iframe heights in responsive layout */
+$( document ).ready(function() {
 
-var WIDTH_TO_HEIGHT_RATIO = 16/9;
+    /* Set iframe heights in responsive layout */
 
-$( window ).resize(function() {
-    var frameWidth = $( ".wrapper" ).width();
-    $('figure iframe').height("'" + frameWidth / WIDTH_TO_HEIGHT_RATIO + "px'");
+    var WIDTH_TO_HEIGHT_RATIO = 16/9;
+
+    $( window ).resize(function() {
+        var frameWidth = $( ".wrapper" ).width();
+        $('figure iframe').height("'" + frameWidth / WIDTH_TO_HEIGHT_RATIO + "px'");
+    });
+
 });
+
