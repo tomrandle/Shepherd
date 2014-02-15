@@ -35,11 +35,10 @@ h1 {
     .intro {
         position:absolute;
         top:55%;
-        font-size: $base * 1.8;
+        font-size: $base * 2;
         left:10%;
         z-index: 99;
         font-weight: bold;
-
 
         p {
             margin:$base 0;
@@ -55,13 +54,17 @@ h1 {
             font-weight: normal;
         }
     }
+
+    figure {
+            position:relative;
+        }
+        .annotations {
+            position:absolute;
+            top:0;
+            left:0;
+}
 }
 
-.annotations {
-    position:absolute;
-    top:0;
-    left:0;
-}
 
 body {
     font-family: 'Oxygen', sans-serif; 
@@ -76,7 +79,6 @@ body {
     margin: 0 auto;
     padding:0 0 $base * 4 0;
 }
-
 
 /* Headings */
 
@@ -175,3 +177,55 @@ figure {
         margin-bottom: 0;
     }
 }
+
+/* Resonsive */
+
+@media screen and (max-width: 600px) {
+
+    .bio {
+        text-align: center;
+        .avatar {
+            float: none;
+                    margin: 0 auto;
+
+        }
+        .bio-content { 
+            width: 100%;
+            margin-left:0;
+        }
+    }
+
+    h1 {
+        position:relative;
+        top:0;
+        left:0;
+        text-align: right;
+        width: 100%;
+        margin-top:$base * 2;
+        img {
+            width:25%;
+            margin-right:5%;
+        }
+    }
+    .hero .intro {
+        position:relative;
+        width: 90%;
+        margin:0 auto;
+        text-align: left;
+        left:0;
+        top:0;
+        font-size: 2 * $base;
+        
+        span {
+            padding: 0;
+            background:none;
+            color:$headingColour;
+        }
+
+        .secondary {
+            color: $bodyColour;
+        }
+    }
+}
+
+
