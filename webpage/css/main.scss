@@ -180,6 +180,17 @@ figure {
 
 /* Resonsive */
 
+@media screen and (max-width: 1000px) {
+    .hero .intro {
+        left:5%;
+    }
+
+    h1 { 
+        right:5%;
+    }
+}
+
+
 @media screen and (max-width: 600px) {
 
     .bio {
@@ -199,12 +210,12 @@ figure {
         position:relative;
         top:0;
         left:0;
-        text-align: right;
+        text-align: left;
         width: 100%;
         margin-top:$base * 2;
         img {
-            width:25%;
-            margin-right:5%;
+            width:$base * 6;
+            margin-left:5%;
         }
     }
     .hero .intro {

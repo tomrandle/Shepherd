@@ -116,6 +116,12 @@ figure {
     margin-bottom: 0; }
 
 /* Resonsive */
+@media screen and (max-width: 1000px) {
+  .hero .intro {
+    left: 5%; }
+
+  h1 {
+    right: 5%; } }
 @media screen and (max-width: 600px) {
   .bio {
     text-align: center; }
@@ -130,12 +136,12 @@ figure {
     position: relative;
     top: 0;
     left: 0;
-    text-align: right;
+    text-align: left;
     width: 100%;
     margin-top: 32px; }
     h1 img {
-      width: 25%;
-      margin-right: 5%; }
+      width: 96px;
+      margin-left: 5%; }
 
   .hero .intro {
     position: relative;
