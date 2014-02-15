@@ -1,32 +1,30 @@
 /* Variables */
 /* Colours from http://chriskempson.github.io/base16/#eighties */
-/*h2:nth-of-type(1) {color:$orange;}
-h2:nth-of-type(2) {color:$yellow;}
-h2:nth-of-type(3) {color:$green;}
-h2:nth-of-type(4) {color:$aqua;}
-h2:nth-of-type(5) {color:$purple;}*/
+/*Hero & Logo */
+h1 {
+  width: 15%;
+  position: absolute;
+  top: 5%;
+  right: 10%;
+  z-index: 99; }
+
 .hero .intro {
   position: absolute;
   top: 55%;
-  font-size: 24px;
-  left: 15%;
+  font-size: 28.8px;
+  left: 10%;
   z-index: 99;
-  font-weight: bold; }
+  font-weight: bold;
+  color: #223344; }
   .hero .intro p {
-    margin: 0; }
+    margin: 16px 0; }
   .hero .intro span {
     background: rgba(255, 255, 255, 0.8);
-    padding: 16px; }
+    padding: 8px 16px; }
   .hero .intro .secondary {
     font-size: 19.2px;
-    font-weight: normal; }
-
-.logo {
-  width: 18%;
-  position: absolute;
-  top: 15%;
-  right: 15%;
-  z-index: 99; }
+    font-weight: normal;
+    color: #4e5153; }
 
 .annotations {
   position: absolute;

@@ -17,47 +17,43 @@ $blue: #69C;
 $purple: #C9C;
 $brown: #D27B53;
 
-/*h2:nth-of-type(1) {color:$orange;}
-h2:nth-of-type(2) {color:$yellow;}
-h2:nth-of-type(3) {color:$green;}
-h2:nth-of-type(4) {color:$aqua;}
-h2:nth-of-type(5) {color:$purple;}*/
+
+/*Hero & Logo */
+
+h1 {
+    width: 15%;
+    position: absolute;
+    top:5%;
+    right:10%;
+    z-index: 99;
+}
 
 .hero {
 
     .intro {
         position:absolute;
         top:55%;
-        font-size: $base * 1.5;
-        left:15%;
+        font-size: $base * 1.8;
+        left:10%;
         z-index: 99;
         font-weight: bold;
+        color: $headingColour;
 
         p {
-            margin:0;
+            margin:$base 0;
         }
 
         span {
             background: rgba(255,255,255,0.8);
-            padding:$base;
+            padding:$base /2 $base;
         }
 
         .secondary {
             font-size: $base * 1.2;
             font-weight: normal;
+            color: $bodyColour;
         }
     }
-
-    
-
-}
-
-.logo {
-    width: 18%;
-    position: absolute;
-    top:15%;
-    right:15%;
-    z-index: 99;
 }
 
 .annotations {
