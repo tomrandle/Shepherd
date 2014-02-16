@@ -153,8 +153,7 @@ figure {
     left: 0;
     top: 0;
     font-size: 32px; }
-
-  span {
-    padding: 0;
-    background: none;
-    color: #223344; } }
+    .hero .intro span {
+      padding: 0;
+      background: none;
+      color: #223344; } }

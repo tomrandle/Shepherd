@@ -228,12 +228,12 @@ figure {
         left:0;
         top:0;
         font-size: 2 * $base;
-    }
 
-  span {
-        padding: 0;
-        background:none;
-        color:$headingColour;
+        span {
+            padding: 0;
+            background:none;
+            color:$headingColour;
+        }
     }
 }
 
