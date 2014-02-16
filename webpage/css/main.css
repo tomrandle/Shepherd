@@ -152,4 +152,9 @@ figure {
     text-align: left;
     left: 0;
     top: 0;
-    font-size: 32px; } }
+    font-size: 32px; }
+
+  span {
+    padding: 0;
+    background: none;
+    color: #223344; } }
