@@ -38,9 +38,7 @@
         </div>
 
         <div class="wrapper">
-
-            
-            
+ 
            <h2>How it works</h2>
            
            <figure>
@@ -60,7 +58,7 @@
 
             <h2>Background</h2>
 
-            <p>On a complete whim about 2 years ago I decided to make a robot that autonomously played one of my favourite iPhone games: <a href="http://www.turtlerockgarage.com/leapsheep/">Leap Sheep</a>. The game mechanics are nice and simple so it lends itself really well to automation. Sheep run from left to right, and to play all you need to do is tap them before they crash into the fence. There's no swiping and the touch points are fixed.</p>
+            <p>On a complete whim about 2 years ago I decided to make a robot to autonomously played one of my favourite iPhone games: <a href="http://www.turtlerockgarage.com/leapsheep/">Leap Sheep</a>. The game's nice and simple so lends itself really well to automation. Sheep run from left to right, and to play all you need to do is tap them before they crash into the fence.</p>
 
             <figure>
                 <img src="webpage/img/shepherd-v1.jpg">
@@ -68,9 +66,9 @@
                     <strong>Version 1</strong> - First (rather messy!) version designed to play an iPhone rather than iPad.</figcaption>
             </figure>
 
-            <p>Working on the project on and off, i’ve now built the robot three times! The first attempt was designed to play an iPhone and was programmed in C. It worked, just about, but the code got a bit out of hand and struggled to fit everything in. About a year later I decided to pick the project up again and rebuilt it entirely to play an iPad instead. This time I decided to tether the Arduino to my computer so I could program in Python. It was an improvement but wedding plans took over and I never finished it. This year I decided to pick it up again and rewrite the code from scratch a second time using Javascript and Node.</p>
+            <p>Working on the project on and off, i’ve now built the robot three times! The first attempt was designed to play an iPhone and was programmed in C. It worked, just about, but the code got a bit out of hand and I struggled to fit everything in the space. About a year later I picked the project up again and rebuilt it to play an iPad instead. I also decided to tether the Arduino to my computer so I could program in Python. It was an improvement but wedding plans took over and I never finished it. This year I decided to have one last go, and rewrote the code from scratch a second time using Javascript and Node. It's still not quite as reliable as i'd like, and i'm still making improvements, but it's getting there!</p>
 
-            <p class="aside">Note: There's probably something deeply philosophical you could say about a device made to play a game for you so you don’t have to, but that's not why I made this. I'm just an engineer (sort of) who wanted to build a robot!</p>
+            <p class="aside">Note: I could pretend there was some deep meaning to a machine designed to play a game for you, but there's not. I'm just an engineer (sort of) who wanted to build a robot!</p>
 
             <h2>The Build</h2>
 
@@ -78,8 +76,6 @@
 
             <p>Before doing anything else I needed to check it was possible to detect sheep and trigger the screen.</p>
             
-            <h4>How to detect sheep?</h4>
-
             <p>My hunch was that a simple light dependent resistor (LDR) would be able to detect changes in brightnesses in the game. To check I strapped an LDR to the screen and measured the resistance. It worked first time!</p>
 
             <figure>
@@ -87,18 +83,17 @@
                 <figcaption><strong>LDR experiment</strong> - The resistance decreases as sheep pass under the light sensor.</figcaption>
             </figure>
 
-            <h4>How to trigger the screen?</h4>
-
             <p>Triggering the screen split into two problems 1) How to simulate a finger 2) How to move the ‘finger’ up and down.</p>
+
             <p>I’d read a weird article about how some Koreans were using <a href="http://www.engadget.com/2010/02/11/south-korean-iphone-users-turn-to-sausages-as-a-cold-weather-me/">sausages as styluses</a> in the winter because touch screens wouldn’t work through gloves, so thought simulating touch might be a problem.</p>
 
             <p>To check I held a stylus with some insulated pliers and found it didn’t work. I then conducted some very strange experiments involving carrots before <a href="http://electronics.stackexchange.com/questions/23036/how-can-a-capacitive-touch-screen-be-triggered-without-human-contact">asking a question on the Electrical Engineering Stack Exchange</a> and discovering that all you needed to do was ground the stylus!</p>
 
-            <p>For actuating the stylus my initial thought was to use servos. I'd used them before and they're relatively inexpensive. However translating the motion to linear and getting the timing and speed required proved to be more or less impossible.</p>
+            <p>For actuating the stylus my initial thought was to use servos. However translating the motion to linear and getting the timing and speed required proved to be more or less impossible.</p>
 
             <figure>
                 <iframe src="//player.vimeo.com/video/85856335?title=0&amp;byline=0&amp;portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                <figcaption><strong>Servo experiment</strong> - The servo triggered the screen but not very efficiently!</figcaption>
+                <figcaption><strong>Servo experiment</strong> - The servo triggered the screen but not very efficiently. This was done late at night - i'm not sure what I was thinking!</figcaption>
             </figure>
 
             <p>I therefore decided to buy some solenoids off eBay. They worked perfectly and, although they required a bit more circuitry, they also had the added benefit that they could be connected to the styluses directly.</p>
@@ -115,7 +110,7 @@
 
             <p>At first I mocked up the electronics on a breadboard before moving to stripboard. For the LDRs I just had to set up 3 simple <a href="http://en.wikipedia.org/wiki/Voltage_divider">potential divider</a> circuits and connect them to the Arduino’s analog inputs.</p>
 
-            <p>For the solenoids I found a circuit on <a href="">bildr.org</a> (an excellent resource for learning how to use different sensors and componets with the Arduino). Solenoids require more current than the Arduino can provide so they need an external power source. Transistors allow the low power Arduino output to switch the high power supply on and off. A diode protects circuit from the <a href="http://en.wikipedia.org/wiki/Counter-electromotive_force">back EMF</a> caused by the solenoids discharging.</p>
+            <p>For the solenoids I found a circuit on <a href="http://bildr.org">bildr.org</a> (an excellent resource for learning how to use different sensors and componets with the Arduino). Solenoids require more current than the Arduino can provide so they need an external power source. Transistors allow the low power Arduino output to switch the high power supply on and off. A diode protects circuit from the <a href="http://en.wikipedia.org/wiki/Counter-electromotive_force">back EMF</a> caused by the solenoids discharging.</p>
 
             <figure>
                 <img src="webpage/img/circuit-example.svg">
@@ -136,7 +131,7 @@
 
             <p>Following some advice from a developer buddy I decided to program the code in a basic loop. Every 50ms the application loops through each lane, reading the sensor values, deciding if any sheep have arrived, and working out whether the solenoid should be up or down.</p>
 
-            <p>The hardest part was accurately detecting the sheep.  I couldn’t just set a fixed threshold as the ambient lighting changed too much and the game actually varies to match the time of day! In the end I found comparing a short rolling average to a longer one worked fairly reliably, although I’m sure I could have done something more intelligent.</p>
+            <p>The hardest part was accurately detecting the sheep. I couldn’t just set a fixed threshold as the ambient lighting changed too much and the game also varies to match the time of day! In the end I found comparing a short rolling average to a longer one worked fairly reliably, although I’m sure I could have done something more intelligent.</p>
 
             <figure class="graph">
                 <figcaption>Sensor readings</figcaption>
@@ -155,13 +150,11 @@
 
             <p>My original aim was to build a robot that was better at playing the game than a human. At the moment it’s not quite there.</p>
 
-            <p>The longest I’ve had it running continuously so far is X minutes: Y sheep. It occasionally just misses a sheep, but with a bit more tweaking I can probably cut this significantly.</p>
-
-            <p>To get a decent score though I need to add a second row of solenoids to tap the sheep when they’re in the air as this multiplies the points you get for each seep by 10!</p>
+            <p>The longest I’ve had it running continuously so far is about 5 minutes: 110 sheep. Occasionally it just misses a very fast or slow sheep, and because the solenoids are fixed there's no way for it to recover. I'm sure with a bit more tweaking I can get it to do much better, but I may have to add a second row of LDRs to more accurately measure the speed of each sheep. If that doesn't work I might try using a webcam and <a href="http://opencv.org/">Open CV</a> instead of the LDRs.</p>
             
             <h2>Your turn</h2>
 
-            <p>Finally, if you're crazy enough, I'd like to challenge you to make your own Leap Sheep cheating machine. I'd be fascinated to see other people's approaches!<p>
+            <p>Finally, if you're crazy enough, I'd like to challenge you to make your own Leap Sheep cheating machine. I'd be fascinated to see other people's approaches! I've learned a lot building mine.<p>
 
             <div class="bio">
                 <div class="avatar">
@@ -169,7 +162,7 @@
                 </div>
                 <div class="bio-content">
                     <h6>Tom Randle</h6>
-                    <p>I'm an engineering graduate turned product manager at a UK software company. Most my spare time's spent making things like this and taking photos! <a href="http://tomrandle.com/">www.tomrandle.com</a></p>
+                    <p>I'm a mechanical engineering graduate turned product manager at a UK software company. I spend most my spare time making things like this or taking photos! <a href="http://tomrandle.com/">www.tomrandle.com</a></p>
                 </div>
             </div>
         </div>
