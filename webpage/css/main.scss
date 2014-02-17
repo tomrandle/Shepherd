@@ -31,6 +31,8 @@ h1 {
 .hero {
 
     width: 100%;
+    max-width: 1600px;
+    margin:0 auto;
     
     .intro {
         position:absolute;
@@ -115,7 +117,7 @@ a {
 /* Images and Video */
 
 img {
-    max-width: 100%;
+    width: 100%;
 }
 
 table {

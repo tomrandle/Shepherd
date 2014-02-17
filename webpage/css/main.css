@@ -9,7 +9,9 @@ h1 {
   z-index: 99; }
 
 .hero {
-  width: 100%; }
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto; }
   .hero .intro {
     position: absolute;
     top: 55%;
@@ -71,7 +73,7 @@ a {
 
 /* Images and Video */
 img {
-  max-width: 100%; }
+  width: 100%; }
 
 table {
   text-align: left;
