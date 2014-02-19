@@ -1,4 +1,4 @@
-Shepherd - Work in Progress
+Shepherd
 ============================
 
 An Arduino / Johnny Five Robot that automatically plays Leap Sheep on the iPad!
